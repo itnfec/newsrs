@@ -21,7 +21,8 @@ class PaketSoalController extends Controller
 
     public function dataTable()
     {
-        return DataTables::of(PaketSoal::with('kelas', 'mapel'))
+        $data = PaketSoal::with('kelas', 'mapel');
+        return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('opsi', function ($data) {
                 return '<button class="btn btn-xs btn-outline-warning btn-edit" data-id="' . $data->id . '" data-kelas-id="' . $data->kelas->id . '" data-kelas-nama="' . $data->kelas->nama . '" data-mapel-id="' . $data->mapel->id . '" data-mapel-nama="' . $data->mapel->nama . '" data-kode="' . $data->kode_paket . '" data-nama="' . $data->nama . '" data-keterangan="' . $data->keterangan . '"><i class="fas fa-edit"></i> Edit</button>

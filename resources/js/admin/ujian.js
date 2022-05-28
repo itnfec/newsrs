@@ -15,7 +15,7 @@ const table = $('#table').DataTable({
         {data: 'rombel.nama'},
         {data: 'paket_soal.nama'},
         {data: 'waktu_mulai'},
-        {data: 'id'},
+        {data: 'opsi'},
     ]
 })
 
@@ -26,7 +26,7 @@ const addWaktuMulai = $('#addWaktu').daterangepicker({
     startDate: new Date(),
     minDate: new Date(),
     locale: {
-      format: 'D-M-Y H:mm'
+        format: 'D-M-Y H:mm'
     }
 })
 
@@ -46,6 +46,32 @@ formTambah.on('submit', function (e) {
         data: form,
         success: function(res) {
             console.log(res)
+            formTambah.modal('hide')
+        }
+    })
+})
+
+// Hapus Paket
+$(document).on('click', '.btn-hapus', function () {
+    const data = $(this).data()
+
+    Swal.fire({
+        title: "Hapus Paket Soal",
+        icon: 'question',
+        html: '<div class="alert alert-danger">Menghapus Paket Soal akan menghapus data launnya yang terkait</div>',
+        showCancelButton: true,
+        cancelButtonText: "Tidak",
+        confirmButtonText: "Ya, hapus!"
+    }).then(hapus => {
+        if (hapus.value) {
+            $.ajax({
+                url: URL_ADMIN + '/ujian/' + data.id,
+                type: 'DELETE',
+                success: function (res) {
+                    Swal.fire('Berhail', 'Paket Soal berhasil dihapus', 'success')
+                    table.draw()
+                }
+            })
         }
     })
 })

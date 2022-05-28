@@ -25,8 +25,12 @@ class UjianController extends Controller
     {
         $data = Ujian::with('rombel:id,nama', 'paketSoal:id,nama')
         ->doesntHave('ujianSiswa');
-
         return DataTables::of($data)
+        ->addColumn('opsi', function ($data) {
+            return '<a href="' . url('admin/ujian/'.$data->id.'/edit') . '" class="btn btn-xs btn-outline-warning" data-target="#modalEdit"><i class="fas fa-edit"></i> Edit</a>
+            <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
+        })
+        ->rawColumns(['opsi'])
         ->addIndexColumn()
         ->make(true);
     }
@@ -83,9 +87,12 @@ class UjianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ujian $ujian)
     {
-        //
+        return response()->json([
+            'status' => TRUE,
+            'data' => $ujian
+        ], 200);
     }
 
     /**
@@ -96,7 +103,8 @@ class UjianController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Ujian::find($id);
+        return view('admin.ujian.edit', compact('data'));
     }
 
     /**
@@ -117,8 +125,12 @@ class UjianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Ujian $ujian)
     {
-        //
+        $ujian->delete();
+
+        return response()->json([
+            'status' => TRUE,
+        ], 200);
     }
 }

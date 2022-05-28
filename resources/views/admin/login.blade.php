@@ -27,7 +27,6 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-
       <form action="{{ route('admin.post-login') }}" method="post">
         @csrf
         <div class="form-group mb-3">

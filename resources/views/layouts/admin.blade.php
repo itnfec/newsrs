@@ -68,16 +68,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; {{ Date('Y') }} <a href="#">meninback</a>.</strong> All rights reserved.
-  </footer>
 </div>
 <!-- ./wrapper -->
 
