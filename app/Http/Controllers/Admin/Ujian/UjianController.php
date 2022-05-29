@@ -23,8 +23,7 @@ class UjianController extends Controller
 
     public function dataTable(Request $request)
     {
-        $data = Ujian::with('rombel:id,nama', 'paketSoal:id,nama')
-        ->doesntHave('ujianSiswa');
+        $data = Ujian::with('rombel:id,nama', 'paketSoal:id,nama');
         return DataTables::of($data)
         ->addColumn('opsi', function ($data) {
             return '<a href="' . url('admin/ujian/'.$data->id.'/edit') . '" class="btn btn-xs btn-outline-warning" data-target="#modalEdit"><i class="fas fa-edit"></i> Edit</a>
