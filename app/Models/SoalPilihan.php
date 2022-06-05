@@ -11,4 +11,7 @@ class SoalPilihan extends Model
     use HasFactory, UuidTrait;
 
     protected $table = 'soal_pilihan';
+
+    protected $fillable = ['soal_id', 'jawaban', 'status'];
+
 }
