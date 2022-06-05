@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin\Soal;
 
 use App\Http\Controllers\Controller;
+use App\Imports\SoalImport;
 use App\Http\Requests\Admin\Soal\StoreSoalRequest;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Soal;
 use App\Models\SoalPilihan;
 use Illuminate\Http\Request;
@@ -68,6 +70,22 @@ class SoalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function import()
+    {
+        return view('admin.soal.import');
+    }
+
+
+    public function importDocument(Request $request)
+    {
+
+        Excel::import(new SoalImport($request->paket_soal_id), $request->file('soal'));
+
+        return back();
+    }
+
+
     public function store(StoreSoalRequest $request)
     {
         DB::beginTransaction();

@@ -9,6 +9,8 @@ class Soal extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['pertanyaan', 'jenis', 'paket_soal_id'];
+
     protected $table = 'soal';
 
     public function pilihan()
