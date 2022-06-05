@@ -38,6 +38,9 @@ Route::apiResource('rombel', 'Rombel\RombelController');
 // Siswa
 Route::match(['get', 'post'], 'siswa/datatable', 'Siswa\SiswaController@dataTable');
 Route::apiResource('siswa', 'Siswa\SiswaController');
+Route::get('siswa-import', 'Siswa\SiswaController@import')->name('siswa.import');
+Route::post('import-document', 'Siswa\SiswaController@importDocument')->name('import.document.siswa');
+
 
 // Mapel
 Route::match(['get', 'post'], 'mapel/datatable', 'Mapel\MapelController@dataTable');

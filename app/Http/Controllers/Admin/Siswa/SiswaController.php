@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin\Siswa;
 
 use App\Http\Controllers\Controller;
+use App\Imports\SiswaImport;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
@@ -88,6 +90,20 @@ class SiswaController extends Controller
             'data' => $siswa
         ], 200);
     }
+
+
+     public function import()
+    {
+        return view('admin.siswa.import');
+    }
+
+    public function importDocument(Request $request)
+     {
+        Excel::import(new SiswaImport($request->rombel_id), $request->file('siswa'));
+        return back();
+     }
+
+
 
     /**
      * Remove the specified resource from storage.
