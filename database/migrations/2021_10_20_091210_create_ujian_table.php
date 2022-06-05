@@ -14,21 +14,21 @@ class CreateUjianTable extends Migration
     public function up()
     {
         Schema::create('ujian', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('paket_soal_id');
-            $table->unsignedBigInteger('rombel_id');
+            $table->uuid('id')->primary();
             $table->string('nama');
             $table->text('keterangan')->nullable();
             $table->dateTime('waktu_mulai');
             $table->integer('durasi');
-            // $table->decimal('bobot')->nullable();
-            // $table->decimal('poin_benar')->nullable();
-            // $table->decimal('poin_salah')->nullable();
-            // $table->decimal('poin_tidak_jawab')->nullable();
+            $table->decimal('bobot')->nullable();
+            $table->decimal('poin_benar')->nullable();
+            $table->decimal('poin_salah')->nullable();
+            $table->decimal('poin_tidak_jawab')->nullable();
             $table->integer('tampil_hasil')->nullable();
             $table->integer('detail_hasil')->nullable();
             $table->string('token')->nullable();
             $table->timestamps();
+            $table->foreignUuid('paket_soal_id')->on('paket_soal')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('rombel_id')->on('rombel')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

@@ -33,6 +33,7 @@ const addWaktuMulai = $('#addWaktu').daterangepicker({
 $('#tes').daterangepicker()
 
 // form tambah
+const modalTambah = $('#modalTambah')
 const formTambah = $('#formTambah')
 formTambah.on('submit', function (e) {
     e.preventDefault();
@@ -45,8 +46,10 @@ formTambah.on('submit', function (e) {
         contentType: false,
         data: form,
         success: function(res) {
-            console.log(res)
-            formTambah.modal('hide')
+            formTambah[0].reset()
+            Swal.fire('Berhasil', 'Paket Soal berhasil ditambahkan', 'success')
+            table.draw()
+            modalTambah.modal('hide')
         }
     })
 })

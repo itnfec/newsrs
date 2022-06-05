@@ -14,9 +14,9 @@ class CreateUjianHasilTable extends Migration
     public function up()
     {
         Schema::create('ujian_hasil', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('ujian_siswa_id');
-            $table->unsignedBigInteger('soal_id');
+            $table->uuid('id')->primary();
+            $table->uuid('ujian_siswa_id')->unsigned();
+            $table->string('soal_id')->unsigned();
             $table->string('jawaban')->nullable();
             $table->integer('ragu')->nullable();
             $table->integer('status');

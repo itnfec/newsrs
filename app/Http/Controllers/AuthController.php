@@ -22,7 +22,10 @@ class AuthController extends Controller
             ]);
         }
 
-        return redirect()->intended('/');
+        if (auth('siswa')) {
+            return redirect()->intended('/');
+        }
+        return redirect()->intended('/admin');
     }
 
     public function logout(Request $request)

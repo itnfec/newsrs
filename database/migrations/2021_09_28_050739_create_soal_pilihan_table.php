@@ -14,14 +14,13 @@ class CreateSoalPilihanTable extends Migration
     public function up()
     {
         Schema::create('soal_pilihan', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('soal_id');
+            $table->uuid('id')->primary();
             $table->text('jawaban');
             $table->text('media')->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
 
-            $table->foreign('soal_id')->on('soal')->references('id')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('soal_id')->on('soal')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

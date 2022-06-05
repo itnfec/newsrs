@@ -14,15 +14,14 @@ class CreateSoalTable extends Migration
     public function up()
     {
         Schema::create('soal', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('paket_soal_id');
+            $table->uuid('id')->primary();
             $table->enum('jenis', ['pilihan_ganda', 'essai']);
             $table->text('pertanyaan');
             $table->text('media')->nullable();
             $table->integer('ulang_media')->default(1)->comment('putar ulang media');
             $table->timestamps();
 
-            $table->foreign('paket_soal_id')->on('paket_soal')->references('id')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('paket_soal_id')->on('paket_soal')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

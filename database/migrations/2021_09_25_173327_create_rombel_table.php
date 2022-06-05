@@ -14,12 +14,11 @@ class CreateRombelTable extends Migration
     public function up()
     {
         Schema::create('rombel', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('kelas_id');
+            $table->uuid('id')->primary();
             $table->string('nama');
             $table->timestamps();
 
-            $table->foreign('kelas_id')->on('kelas')->references('id')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('kelas_id')->on('kelas')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

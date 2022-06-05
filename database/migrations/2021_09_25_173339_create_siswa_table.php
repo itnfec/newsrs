@@ -14,8 +14,7 @@ class CreateSiswaTable extends Migration
     public function up()
     {
         Schema::create('siswa', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('rombel_id');
+            $table->uuid('id')->primary();
             $table->string('nama');
             $table->string('nis');
             $table->string('password');
@@ -23,7 +22,7 @@ class CreateSiswaTable extends Migration
             $table->string('foto')->nullable();
             $table->timestamps();
 
-            $table->foreign('rombel_id')->on('rombel')->references('id')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('rombel_id')->on('rombel')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

@@ -14,16 +14,14 @@ class CreatePaketSoalTable extends Migration
     public function up()
     {
         Schema::create('paket_soal', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('kelas_id');
-            $table->unsignedBigInteger('mapel_id');
+            $table->uuid('id')->primary();
             $table->string('kode_paket');
             $table->string('nama');
             $table->text('keterangan');
             $table->timestamps();
 
-            $table->foreign('kelas_id')->on('kelas')->references('id')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('mapel_id')->on('mapel')->references('id')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('kelas_id')->on('kelas')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('mapel_id')->on('mapel')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

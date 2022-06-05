@@ -14,15 +14,15 @@ class CreateUjianSiswaTable extends Migration
     public function up()
     {
         Schema::create('ujian_siswa', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('ujian_id');
-            $table->unsignedBigInteger('siswa_id');
+            $table->uuid('id')->primary();
             $table->dateTime('mulai');
             $table->dateTime('selesai');
             $table->decimal('nilai')->nullable();
             $table->text('user_agent');
             $table->integer('status')->default(0);
             $table->timestamps();
+            $table->foreignUuid('ujian_id')->on('ujian')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('siswa_id')->on('siswa')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

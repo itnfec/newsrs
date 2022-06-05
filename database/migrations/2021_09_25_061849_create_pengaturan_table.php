@@ -14,7 +14,7 @@ class CreatePengaturanTable extends Migration
     public function up()
     {
         Schema::create('pengaturan', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nama_institusi');
             $table->string('tagline');
             $table->text('logo')->nullable();

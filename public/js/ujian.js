@@ -130,6 +130,8 @@ btnPrev.on('click', function () {
 btnNext.on('click', function () {
   var data = $(this).data(); // console.log(data)
 
+  var form = new FormData($('#formJawab'));
+  simpanJawaban(form);
   loadSoal(data.id);
 }); // ragu ragu
 
@@ -179,17 +181,9 @@ function daftarSoal() {
   });
 }
 
-daftarSoal(); // pilih soal
+daftarSoal();
 
-$(document).on('click', '.btn-pilihan', function () {
-  var data = $(this).data(); // daftarSoal()
-
-  loadSoal(data.id);
-}); // simpan jawaban
-
-$('#formJawab').on('submit', function (e) {
-  e.preventDefault();
-  var form = new FormData(this);
+function simpanJawaban(form) {
   $.post({
     url: '/ujian/simpan-jawaban',
     data: form,
@@ -206,6 +200,19 @@ $('#formJawab').on('submit', function (e) {
       }
     }
   });
+} // pilih soal
+
+
+$(document).on('click', '.btn-pilihan', function () {
+  var data = $(this).data(); // daftarSoal()
+
+  loadSoal(data.id);
+}); // simpan jawaban
+
+$('#formJawab').on('submit', function (e) {
+  e.preventDefault();
+  var form = new FormData(this);
+  simpanJawaban(form);
 }); // Akhiri Ujian
 
 $('#btnAkhiri').on('click', function () {
