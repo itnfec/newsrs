@@ -26,11 +26,22 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
+
+                        	   	<div class="col-md-4">
+                                  <div class="form-group">
+                        			<label for="editSchool">Sekolah</label>
+                        			<select name="school_id" id="editSchool" class="form-control select-school" required></select>
+                    			</div>
+                    		</div>
+
+
                             <div class="col-md-4">
                                   <div class="form-group">
                         			<label for="editRombel">Rombongan Belajar</label>
                         			<select name="rombel_id" id="editRombel" class="form-control select-rombel" required></select>
                     			</div>
+                            </div>
+
                             </div>
                         </div>
                     </div>
@@ -95,6 +106,21 @@
         placeholder: 'Pilih Rombongan Belajar',
         ajax: {
             url: URL_ADMIN + '/rombel/select2',
+            dataType: 'json',
+            data: function (params) {
+                return {
+                    term: params.term
+                }
+            }
+        }
+    })
+
+          //get sekolah 
+       const selectSchool = $('.select-school').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Pilih Sekolah',
+        ajax: {
+            url: URL_ADMIN + '/school/select2',
             dataType: 'json',
             data: function (params) {
                 return {

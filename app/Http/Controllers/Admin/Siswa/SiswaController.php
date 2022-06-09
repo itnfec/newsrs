@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Siswa;
 use App\Http\Controllers\Controller;
 use App\Imports\SiswaImport;
 use App\Models\Siswa;
+use App\Models\Domain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
@@ -92,6 +93,23 @@ class SiswaController extends Controller
     }
 
 
+    public function select2sekolah(Request $request)
+    {
+         $domain = Domain::select('id', 'school_name AS text', 'id');
+
+        if ($request->school_name != null) {
+            $domain = $domain->where('school_name', $request->school_name);
+        }
+
+        $domain = $domain->get();
+
+        return response()->json([
+            'status' => TRUE,
+            'results' => $domain
+        ], 200);
+    }
+
+
      public function import()
     {
         return view('admin.siswa.import');
@@ -99,7 +117,7 @@ class SiswaController extends Controller
 
     public function importDocument(Request $request)
      {
-        Excel::import(new SiswaImport($request->rombel_id), $request->file('siswa'));
+        Excel::import(new SiswaImport($request), $request->file('siswa'));
         return back();
      }
 

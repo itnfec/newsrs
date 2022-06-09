@@ -5,6 +5,8 @@ namespace App\Imports;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Siswa;
 use Illuminate\Support\Collection;
+use Illuminate\Http\Request;
+
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -12,11 +14,11 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class SiswaImport implements ToCollection, WithHeadingRow, WithValidation
 {
 
-	private $rombel_id;
+	private $request; 
 
-    public function __construct(String $rombel_id) 
+    public function __construct(Request $request) 
     {
-        $this->rombel_id = $rombel_id;
+        $this->request = $request;
     }
 
 
@@ -28,7 +30,8 @@ class SiswaImport implements ToCollection, WithHeadingRow, WithValidation
 	        	'nis' => $row['nis'],
     	    	'jenis_kelamin' => $row['jenis_kelamin'],
     	    	'password' => Hash::make('siswa'),
-    	    	'rombel_id' => $this->rombel_id
+    	    	'rombel_id' => $this->request->rombel_id,
+    	    	'domain_id' => $this->request->school_id,
         	];
 
         	Siswa::create($data);            	
