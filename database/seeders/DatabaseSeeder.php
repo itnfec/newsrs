@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RombelSeeder::class);
         $this->call(SiswaSeeder::class);
         $this->call(MapelSeeder::class);
+        $this->call(DomainSeeder::class);
     }
 }
