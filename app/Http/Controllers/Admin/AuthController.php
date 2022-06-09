@@ -18,7 +18,7 @@ class AuthController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        return redirect()->intended();
+        return redirect('/admin');
     }
 
     public function logout(Request $request)
@@ -29,6 +29,6 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/admin');
     }
 }

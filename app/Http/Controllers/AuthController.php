@@ -21,11 +21,7 @@ class AuthController extends Controller
                 'kredensial' => "NIS atau Password salah!"
             ]);
         }
-
-        if (auth('siswa')) {
-            return redirect()->intended('/');
-        }
-        return redirect()->intended('/admin');
+        return redirect('/');
     }
 
     public function logout(Request $request)

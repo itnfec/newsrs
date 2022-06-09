@@ -58,3 +58,12 @@ use Stancl\Tenancy\Middleware\CheckTenantForMaintenanceMode;
     });
 
 // require __DIR__.'/auth.php';
+
+
+
+Route::get('/clear', function() {
+   $exitCode = Artisan::call('config:cache');
+   $exitCode = Artisan::call('cache:clear');
+   $exitCode = Artisan::call('view:clear');
+   $exitCode = Artisan::call('route:cache');
+});

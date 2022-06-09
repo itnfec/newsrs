@@ -14,14 +14,11 @@ class DomainSeeder extends Seeder
      */
     public function run()
     {
-        $domain = Domain::first();
-
-        if (!$domain) {
-            $domain = new Domain;
-        }
-
-        $domain->name = 'testestes';
-        $domain->school_name = 'testes 1';
-        $domain->save();
+            for ($i = 0; $i < 3; $i++) {
+                 $domain = new Domain();
+                 $domain->name = 'localhost:800' . $i;
+                 $domain->school_name = 'testes' . $i;
+                 $domain->save();
+            }
     }
 }
