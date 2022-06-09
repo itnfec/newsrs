@@ -7,6 +7,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-tools">
+                     <a href="{{ route('siswa.import') }}" class="btn btn-sm btn-success btn-sm"><i class="fas fa-plus"></i>Import Siswa</a>
                     <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalTambah"><i class="fas fa-plus"></i> Tambah Siswa</button>
                 </div>
             </div>
