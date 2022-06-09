@@ -12,7 +12,7 @@ class SoalImport implements ToCollection, WithHeadingRow
 {
 	private $paket_soal_id;
 
-    public function __construct(int $paket_soal_id) 
+    public function __construct(String $paket_soal_id) 
     {
         $this->paket_soal_id = $paket_soal_id;
     }

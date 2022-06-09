@@ -68,7 +68,7 @@ function loadSoal() {
 
       $('#ujianHasilId').val(data.id); // no soal
 
-      $('#noSoal').html(res.current_page); // ragu ragu
+      $('#noSoal').html(item.jawaban); // ragu ragu
 
       btnRagu.data('id', data.id);
 
@@ -130,7 +130,7 @@ btnPrev.on('click', function () {
 btnNext.on('click', function () {
   var data = $(this).data(); // console.log(data)
 
-  var form = new FormData($('#formJawab'));
+  var form = new FormData($('#formJawab').get(0));
   simpanJawaban(form);
   loadSoal(data.id);
 }); // ragu ragu
@@ -174,7 +174,7 @@ function daftarSoal() {
       res.forEach(function (item, index) {
         // console.log(item)
         var color = item.ragu == 1 ? 'btn-warning' : item.jawaban != null ? 'btn-primary' : 'btn-outline-primary';
-        html += "\n                <div class=\"col-md-3 col-sm-2 mb-3\">\n                    <button class=\"btn btn-sm btn-block ".concat(color, " btn-pilihan\" id=\"btnPilihan").concat(index + 1, "\" data-id=\"").concat(index + 1, "\">").concat(index + 1, "</button>\n                </div>");
+        html += "<div class=\"col-md-3 col-sm-2 mb-3\">\n                    <button class=\"btn btn-sm btn-block ".concat(color, " btn-pilihan\" id=\"btnPilihan").concat(index + 1, "\" data-id=\"").concat(index + 1, "\">").concat(index + 1, "</button>\n                </div>");
       });
       $('#pilihan').html(html);
     }

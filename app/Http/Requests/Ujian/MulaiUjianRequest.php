@@ -63,7 +63,7 @@ class MulaiUjianRequest extends FormRequest
         return [
             'ujian_id.exists' => 'Ujian tidak ditemukan',
             'ujian_id.unique' => 'Anda telah menyelesaikan Ujian tersebut',
-            'is_ujian.in' => 'Sedang ada ujian yang aktif',
+            'is_ujian.in' => 'Sedang ada ujian yang aktif <a href="/ujian">Lanjutkan Ujian</a>',
             'token.exists' => 'Token Ujian salah!'
         ];
     }

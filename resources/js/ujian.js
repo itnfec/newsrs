@@ -65,7 +65,7 @@ function loadSoal(page = 1) {
             $('#ujianHasilId').val(data.id)
 
             // no soal
-            $('#noSoal').html(res.current_page)
+            $('#noSoal').html(item.jawaban)
 
             // ragu ragu
             btnRagu.data('id', data.id)
@@ -135,7 +135,7 @@ btnPrev.on('click', function () {
 btnNext.on('click', function () {
     const data = $(this).data()
     // console.log(data)
-    const form = new FormData($('#formJawab'))
+    const form = new FormData($('#formJawab').get(0))
     simpanJawaban(form)
     loadSoal(data.id)
 })
@@ -180,8 +180,7 @@ function daftarSoal() {
             res.forEach(function(item, index) {
                 // console.log(item)
                 let color = item.ragu == 1 ? 'btn-warning' : item.jawaban != null ? 'btn-primary' : 'btn-outline-primary'
-                html += `
-                <div class="col-md-3 col-sm-2 mb-3">
+                html += `<div class="col-md-3 col-sm-2 mb-3">
                     <button class="btn btn-sm btn-block ${color} btn-pilihan" id="btnPilihan${index + 1}" data-id="${index + 1}">${index + 1}</button>
                 </div>`
             })
