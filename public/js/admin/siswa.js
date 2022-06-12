@@ -127,6 +127,8 @@ var table = $('#table').DataTable({
     data: 'index',
     name: 'id'
   }, {
+    data: 'domain_id'
+  }, {
     data: 'rombel.nama',
     name: 'rombel.nama',
     render: function render(data, type, row) {

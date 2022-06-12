@@ -10,6 +10,10 @@ class Domain extends Model
 {
     use HasFactory, UuidTrait;
 
-    protected $fillable = ['name', 'school_name'];
+    protected $fillable = ['id', 'name', 'school_name', 'logo',];
 
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class);
+    }
 }

@@ -20,4 +20,9 @@ class Siswa extends Authenticatable
     {
         return $this->belongsTo(Rombel::class);
     }
+
+    public function domain()
+    {
+        return $this->belongsTo(Domain::class);
+    }
 }

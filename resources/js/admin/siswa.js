@@ -9,8 +9,10 @@ const table = $('#table').DataTable({
     columns: [
         { data: 'index', name: 'id' },
         {
+            data: 'domain_id'
+            }, {
             data: 'rombel.nama', name: 'rombel.nama', render: function(data, type, row) {
-                return row.rombel.kelas.nama + ' ' + data
+                return row.rombel.kelas.nama + ' ' + data;
             }
         },
         { data: 'nama' },

@@ -14,9 +14,35 @@ class DomainSeeder extends Seeder
      */
     public function run()
     {
-        $domain = new Domain();
-                $domain->name = 'localhost:800' . $i;
-                $domain->school_name = 'testes' . $i;
-                $domain->save();
+        $data = [
+            [
+                'name' => 'binailmi.readingsystem.id',
+                'school_name' => 'Bina Ilmi',
+                'logo' => null,
+            ],
+            [
+                'name' => 'siba-ummulqurodepok.id',
+                'school_name' => 'Ummul Quro',
+                'logo' => null,
+            ],
+            [
+                'name' => 'nf-testingcenter.org',
+                'school_name' => 'SRS - NF Testing Center',
+                'logo' => null,
+            ],
+            [
+                'name' => 'kaifa.readingsystem.id',
+                'school_name' => 'Kaifa',
+                'logo' => null,
+            ],
+            [
+                'name' => 'newsrs.test',
+                'school_name' => 'SRS - NEW',
+                'logo' => null,
+            ],
+        ];
+        foreach ($data as $key => $value) {
+            Domain::create($value);
+        }
     }
 }

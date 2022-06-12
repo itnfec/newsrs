@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Sekolah</th>
                             <th>Rombel</th>
                             <th>Nama</th>
                             <th>NIS</th>
@@ -86,7 +87,7 @@
                     <div class="form-group">
                         <label for="editNama">Nama Siswa</label>
                         <input type="text" name="nama" class="form-control" id="editNama" placeholder="Masukkan Nama Siswa">
-                    </div>$value
+                    </div>
                     <div class="form-group">
                         <label for="editNis">NIS</label>
                         <input type="text" name="nis" class="form-control" id="editNis" placeholder="Masukan NIS Siswa">
