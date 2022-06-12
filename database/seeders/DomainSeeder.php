@@ -14,11 +14,9 @@ class DomainSeeder extends Seeder
      */
     public function run()
     {
-            for ($i = 0; $i < 3; $i++) {
-                 $domain = new Domain();
-                 $domain->name = 'localhost:800' . $i;
-                 $domain->school_name = 'testes' . $i;
-                 $domain->save();
-            }
+        $domain = new Domain();
+                $domain->name = 'localhost:800' . $i;
+                $domain->school_name = 'testes' . $i;
+                $domain->save();
     }
 }

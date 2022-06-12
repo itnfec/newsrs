@@ -22,6 +22,9 @@ class CheckDomainMiddleware
         $domain = Domain::where('name', $url)->first(); 
 
         if($domain != null){
+            if ($domain == env('MASTER_DOMAIN')) {
+                return redirect('admin');
+            }
             \View::share('tenant', $domain);
         }
     
