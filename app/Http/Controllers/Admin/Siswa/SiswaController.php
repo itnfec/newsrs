@@ -32,7 +32,7 @@ class SiswaController extends Controller
                 <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="'.$data->id.'"><i class="fas fa-trash"></i> Hapus</button>';
             })
             ->addColumn('domain_id', function ($data) {
-                return '<span class="badge badge-pill badge-primary">'. $data->domain->school_name .'</span>';
+                return '<span class="badge badge-pill badge-primary">'. $data->domain == null? "SEKOLAH TIDAK TERHUBUNG" : $data->domain->school_name .'</span>';
             })
             ->rawColumns(['opsi','domain_id'])
             ->make(true);
