@@ -9,11 +9,12 @@ const table = $('#table').DataTable({
     },
     columns: [
         {data: 'index', name: 'id'},
-        {data: 'kelas.nama', name :'kelas.nama'},
-        {data: 'mapel.nama', name: 'mapel.nama'},
-        {data: 'kode_paket', name: 'kode_paket'},
-        {data: 'nama', name: 'nama'},
-        {data: 'keterangan', name: 'keterangan'},
+        {data: 'judul', name :'judul'},
+        {data: 'author', name: 'author'},
+        {data: 'publisher', name: 'publisher'},
+        {data: 'level', name: 'level'},
+        {data: 'point', name: 'point'},
+        {data: 'jenis', name: 'jenis'},
         {data: 'opsi', name: 'id'}
     ]
 })

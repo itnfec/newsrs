@@ -74,6 +74,7 @@
                         </p>
                     </a>
                 </li>
+                
                 <li class="nav-item">
                     <a href="{{ route('soal.index') }}"
                         class="nav-link {{ request()->routeIs('soal.index') ? 'active' : '' }}">

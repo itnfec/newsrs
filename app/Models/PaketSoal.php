@@ -12,6 +12,8 @@ class PaketSoal extends Model
 
     protected $table = 'paket_soal';
 
+    protected $fillable = ['judul', 'author', 'publisher', 'level', 'point', 'jenis'];
+
     protected $guarded = [];
 
     public function kelas()

@@ -15,13 +15,13 @@ class CreatePaketSoalTable extends Migration
     {
         Schema::create('paket_soal', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('kode_paket');
-            $table->string('nama');
-            $table->text('keterangan');
+            $table->string('judul')->nullable();
+            $table->string('author')->nullable();
+            $table->text('publisher')->nullable();
+            $table->integer('level')->nullable();
+            $table->float('point')->nullable();
+            $table->string('jenis')->nullable();
             $table->timestamps();
-
-            $table->foreignUuid('kelas_id')->on('kelas')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreignUuid('mapel_id')->on('mapel')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

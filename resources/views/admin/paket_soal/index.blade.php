@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-tools">
+                         <a href="{{ route('paket.import') }}" class="btn btn-sm btn-success btn-sm"><i class="fas fa-plus"></i>
+                            Import Paket Soal</a>
                         <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalTambah"><i class="fas fa-plus"></i> Tambah Paket Soal</button>
                     </div>
                 </div>
@@ -15,11 +17,12 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Kelas</th>
-                                <th>Mata Pelajaran</th>
-                                <th>Kode Paket</th>
-                                <th>Nama Paket Soal</th>
-                                <th>Keterangan</th>
+                                <th>Judul</th>
+                                <th>Authoer</th>
+                                <th>publisher</th>
+                                <th>level</th>
+                                <th>point</th>
+                                <th>jenis</th>
                                 <th>Opsi</th>
                             </tr>
                         </thead>

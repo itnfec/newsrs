@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin\PaketSoal;
 
 use App\Http\Controllers\Controller;
+use App\Imports\PaketSoalImport;
 use App\Models\PaketSoal;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaketSoalController extends Controller
 {
@@ -21,16 +23,33 @@ class PaketSoalController extends Controller
 
     public function dataTable()
     {
-        $data = PaketSoal::with('kelas', 'mapel');
-        return DataTables::of($data)
+        $data = new PaketSoal;
+        return DataTables::of($data->select('*'))
             ->addIndexColumn()
             ->addColumn('opsi', function ($data) {
                 return '<button class="btn btn-xs btn-outline-warning btn-edit" data-id="' . $data->id . '" data-kelas-id="' . $data->kelas->id . '" data-kelas-nama="' . $data->kelas->nama . '" data-mapel-id="' . $data->mapel->id . '" data-mapel-nama="' . $data->mapel->nama . '" data-kode="' . $data->kode_paket . '" data-nama="' . $data->nama . '" data-keterangan="' . $data->keterangan . '"><i class="fas fa-edit"></i> Edit</button>
                 <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
             })
             ->rawColumns(['opsi'])
-            ->make(true);
+            ->make(false);
     }
+
+
+
+    public function import()
+    {
+        return view('admin.paket_soal.import');
+    }
+
+
+    public function importDocument(Request $request)
+    {
+
+        Excel::import(new PaketSoalImport(), $request->file('paket'));
+
+        return view('admin.paket_soal.index');
+    }
+
 
     public function select2(Request $request)
     {
