@@ -21,6 +21,7 @@ class CreatePaketSoalTable extends Migration
             $table->integer('level')->nullable();
             $table->float('point')->nullable();
             $table->string('jenis')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
             $table->foreignUuid('kelas_id')->on('kelas')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreignUuid('mapel_id')->on('mapel')->onUpdate('CASCADE')->onDelete('CASCADE');

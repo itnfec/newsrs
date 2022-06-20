@@ -12,7 +12,7 @@ class PaketSoal extends Model
 
     protected $table = 'paket_soal';
 
-    protected $fillable = ['judul', 'author', 'publisher', 'level', 'point', 'jenis'];
+    protected $fillable = ['judul', 'author', 'publisher', 'level', 'point', 'jenis','kelas_id','mapel_id'];
 
     protected $guarded = [];
 

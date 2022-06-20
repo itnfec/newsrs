@@ -153,7 +153,10 @@ var table = $('#table').DataTable({
     data: 'jenis'
   }]
 });
-table.buttons().container().appendTo('#table_wapper>.row>.col-md-6:eq(0)'); // Tambah Paket
+table.buttons().container().appendTo('#table_wapper>.row>.col-md-6:eq(0)');
+$('.summernote').summernote({
+  height: 300
+}); // Tambah Paket
 
 var modalTambah = $('#modalTambah');
 var formTambah = document.getElementById('formTambah');

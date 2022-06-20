@@ -32,6 +32,10 @@ var table = $('#table').DataTable({
 table.buttons().container()
     .appendTo('#table_wapper>.row>.col-md-6:eq(0)');
 
+$('.summernote').summernote({
+    height: 300
+})
+
 // Tambah Paket
 const modalTambah = $('#modalTambah')
 const formTambah = document.getElementById('formTambah')

@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('title', 'Paket Soal')
 
+@push('style')
+    <link rel="stylesheet" href="{{ asset('assets/plugins/summernote/summernote-bs4.min.css') }}">
+@endpush
+
+@push('script')
+    <script src="{{ asset('assets/plugins/summernote/summernote-bs4.js') }}"></script>
+@endpush
+
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -33,7 +41,7 @@
 
     {{-- Modal Tambah --}}
     <div class="modal fade" id="modalTambah">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah Paket Soal</h5>
@@ -50,16 +58,32 @@
                             <select name="mapel_id" id="addMapel" class="form-control select-mapel"></select>
                         </div>
                         <div class="form-group">
-                            <label for="addKode">Kode Paket</label>
-                            <input type="text" name="kode_paket" class="form-control" id="addKode" placeholder="Masukkan Kode Paket">
+                            <label for="addJudul">Judul</label>
+                            <input type="text" name="judul" class="form-control" id="addJudul" placeholder="Masukkan Judul Paket">
                         </div>
                         <div class="form-group">
-                            <label for="addNama">Nama</label>
-                            <input type="text" name="nama" class="form-control" id="addNama" placeholder="Masukkan Nama Paket">
+                            <label for="addAuthor">Author</label>
+                            <input type="text" name="author" class="form-control" id="addAuthor" placeholder="Masukkan Author Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="addPublisher">Publisher</label>
+                            <input type="text" name="publisher" class="form-control" id="addPublisher" placeholder="Masukkan Publisher Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="addLevel">Level</label>
+                            <input type="text" name="level" class="form-control" id="addLevel" placeholder="Masukkan Level Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="addPoint">Point</label>
+                            <input type="text" name="point" class="form-control" id="addPoint" placeholder="Masukkan Point Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="addJenis">Jenis</label>
+                            <input type="text" name="jenis" class="form-control" id="addJenis" placeholder="Masukkan Jenis Paket">
                         </div>
                         <div class="form-group">
                             <label for="addKeterangan">Keterangan</label>
-                            <textarea name="keterangan" id="addKeterangan" cols="30" rows="5" class="form-control" placeholder="Masukkan keterangan Paket Soal"></textarea>
+                            <textarea name="keterangan" cols="30" rows="5" class="form-control summernote" placeholder="Masukkan keterangan Paket Soal"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -72,7 +96,7 @@
 
     {{-- Modal Edit --}}
     <div class="modal fade" id="modalEdit">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Paket Soal</h5>
@@ -82,23 +106,39 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="editKelas">Kelas</label>
-                            <select name="kelas_id" class="form-control select-kelas" id="editKelas"></select>
+                            <select name="kelas_id" id="editKelas" class="form-control select-kelas"></select>
                         </div>
                         <div class="form-group">
                             <label for="editMapel">Mata Pelajaran</label>
                             <select name="mapel_id" id="editMapel" class="form-control select-mapel"></select>
                         </div>
                         <div class="form-group">
-                            <label for="editkodePaket">Kode Paket</label>
-                            <input name="kode_paket" type="text" class="form-control" id="editKodePaket" placeholder="Masukkan Kode Paket Soal">
+                            <label for="editJudul">Judul</label>
+                            <input type="text" name="judul" class="form-control" id="editJudul" placeholder="Masukkan Judul Paket">
                         </div>
                         <div class="form-group">
-                            <label for="editNama">Nama</label>
-                            <input name="nama" type="text" class="form-control" id="editNama" placeholder="Masukkan Nama Paket Soal">
+                            <label for="editAuthor">Author</label>
+                            <input type="text" name="author" class="form-control" id="editAuthor" placeholder="Masukkan Author Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="editPublisher">Publisher</label>
+                            <input type="text" name="publisher" class="form-control" id="editPublisher" placeholder="Masukkan Publisher Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="editLevel">Level</label>
+                            <input type="text" name="level" class="form-control" id="editLevel" placeholder="Masukkan Level Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="editPoint">Point</label>
+                            <input type="text" name="point" class="form-control" id="editPoint" placeholder="Masukkan Point Paket">
+                        </div>
+                        <div class="form-group">
+                            <label for="editJenis">Jenis</label>
+                            <input type="text" name="jenis" class="form-control" id="editJenis" placeholder="Masukkan Jenis Paket">
                         </div>
                         <div class="form-group">
                             <label for="editKeterangan">Keterangan</label>
-                            <textarea name="keterangan" id="editKeterangan" cols="30" rows="5" class="form-control" placeholder="Masukkan Keterangan"></textarea>
+                            <textarea name="keterangan" cols="30" rows="5" class="form-control summernote" placeholder="Masukkan keterangan Paket Soal"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
