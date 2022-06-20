@@ -35,7 +35,7 @@ class SiswaController extends Controller
                 if (empty($data->domain)) {
                     return '<span class="badge badge-pill badge-primary"> SEKOLAH TIDAK TERHUBUNG </span>';
                 } else {
-                    return '<span class="badge badge-pill badge-primary"> SEKOLAH TERHUBUNG </span>';
+                    return '<span class="badge badge-pill badge-primary">'. $data->domain->school_name .'</span>';
                 }
             })
             ->rawColumns(['opsi','domain_id'])
