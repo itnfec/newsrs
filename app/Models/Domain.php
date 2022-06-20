@@ -14,6 +14,6 @@ class Domain extends Model
 
     public function siswa()
     {
-        return $this->hasMany(Siswa::class);
+        return $this->hasMany(Siswa::class,'id');
     }
 }

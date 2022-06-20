@@ -23,6 +23,6 @@ class Siswa extends Authenticatable
 
     public function domain()
     {
-        return $this->belongsTo(Domain::class);
+        return $this->belongsTo(Domain::class,'domain_id','id');
     }
 }
