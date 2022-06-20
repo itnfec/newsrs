@@ -7,23 +7,22 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-tools">
-                         <a href="{{ route('paket.import') }}" class="btn btn-sm btn-success btn-sm"><i class="fas fa-plus"></i>
+                        <a href="{{ route('paket.import') }}" class="btn btn-sm btn-success btn-sm"><i class="fas fa-plus"></i>
                             Import Paket Soal</a>
                         <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalTambah"><i class="fas fa-plus"></i> Tambah Paket Soal</button>
                     </div>
                 </div>
-                <div class="card-body">
-                    <table class="table table-striped text-center display nowrap w-100" id="table">
+                <div class="card-body table-responsive">
+                    <table class="table table-striped display nowrap w-100" id="table">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <th>Opsi</th>
                                 <th>Judul</th>
-                                <th>Authoer</th>
+                                <th>Author</th>
                                 <th>publisher</th>
                                 <th>level</th>
                                 <th>point</th>
                                 <th>jenis</th>
-                                <th>Opsi</th>
                             </tr>
                         </thead>
                     </table>

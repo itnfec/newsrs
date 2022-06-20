@@ -130,33 +130,30 @@ __webpack_require__.r(__webpack_exports__);
 
 var table = $('#table').DataTable({
   processing: true,
+  responsive: true,
   serverSide: true,
+  lengthChange: false,
+  buttons: ['copy', 'excel', 'pdf', 'colvis'],
   ajax: {
     url: URL_ADMIN + '/paket-soal/datatable'
   },
   columns: [{
-    data: 'index',
-    name: 'id'
+    data: 'opsi'
   }, {
-    data: 'kelas.nama',
-    name: 'kelas.nama'
+    data: 'judul'
   }, {
-    data: 'mapel.nama',
-    name: 'mapel.nama'
+    data: 'author'
   }, {
-    data: 'kode_paket',
-    name: 'kode_paket'
+    data: 'publisher'
   }, {
-    data: 'nama',
-    name: 'nama'
+    data: 'level'
   }, {
-    data: 'keterangan',
-    name: 'keterangan'
+    data: 'point'
   }, {
-    data: 'opsi',
-    name: 'id'
+    data: 'jenis'
   }]
-}); // Tambah Paket
+});
+table.buttons().container().appendTo('#table_wapper>.row>.col-md-6:eq(0)'); // Tambah Paket
 
 var modalTambah = $('#modalTambah');
 var formTambah = document.getElementById('formTambah');

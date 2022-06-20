@@ -1,23 +1,36 @@
 import '../partials/select_kelas'
 import '../partials/select_mapel'
 
-const table = $('#table').DataTable({
+var table = $('#table').DataTable({
     processing: true,
+    responsive: true,
     serverSide: true,
+    lengthChange: false,
+        buttons: ['copy', 'excel', 'pdf', 'colvis'],
     ajax: {
         url: URL_ADMIN + '/paket-soal/datatable'
     },
     columns: [
-        {data: 'index', name: 'id'},
-        {data: 'judul', name :'judul'},
-        {data: 'author', name: 'author'},
-        {data: 'publisher', name: 'publisher'},
-        {data: 'level', name: 'level'},
-        {data: 'point', name: 'point'},
-        {data: 'jenis', name: 'jenis'},
-        {data: 'opsi', name: 'id'}
+        {
+            data: 'opsi'
+        }, {
+            data: 'judul'
+        }, {
+            data: 'author'
+        }, {
+            data: 'publisher'
+        }, {
+            data: 'level'
+        }, {
+            data: 'point'
+        }, {
+            data: 'jenis'
+        }
     ]
 })
+
+table.buttons().container()
+    .appendTo('#table_wapper>.row>.col-md-6:eq(0)');
 
 // Tambah Paket
 const modalTambah = $('#modalTambah')

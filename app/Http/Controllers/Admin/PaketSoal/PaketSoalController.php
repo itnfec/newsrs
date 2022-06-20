@@ -23,15 +23,14 @@ class PaketSoalController extends Controller
 
     public function dataTable()
     {
-        $data = new PaketSoal;
-        return DataTables::of($data->select('*'))
+        $data = PaketSoal::with(['kelas','mapel'])->get();
+        return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('opsi', function ($data) {
-                return '<button class="btn btn-xs btn-outline-warning btn-edit" data-id="' . $data->id . '" data-kelas-id="' . $data->kelas->id . '" data-kelas-nama="' . $data->kelas->nama . '" data-mapel-id="' . $data->mapel->id . '" data-mapel-nama="' . $data->mapel->nama . '" data-kode="' . $data->kode_paket . '" data-nama="' . $data->nama . '" data-keterangan="' . $data->keterangan . '"><i class="fas fa-edit"></i> Edit</button>
-                <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
+                return '<button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
             })
             ->rawColumns(['opsi'])
-            ->make(false);
+            ->make(true);
     }
 
 
