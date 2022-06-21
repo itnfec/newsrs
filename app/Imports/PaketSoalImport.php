@@ -11,6 +11,12 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class PaketSoalImport implements ToCollection, WithHeadingRow
 {
+    private $request; 
+
+    public function __construct(Request $request) 
+    {
+        $this->request = $request;
+    }
 
 	  public function collection(Collection $rows)
     {
@@ -21,7 +27,9 @@ class PaketSoalImport implements ToCollection, WithHeadingRow
     	    	'publisher' => $row['publisher'],
             'level' => $row['level'],
             'point' => $row['point'],
-            'jenis' => $row['jenis']
+            'jenis' => $row['jenis'],
+            'kelas_id' => $this->request->kelas_id,
+            'mapel_id' => $this->request->mapel_id,
         	];
 
         	PaketSoal::create($data);            	
