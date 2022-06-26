@@ -82,7 +82,7 @@ class SoalController extends Controller
 
         Excel::import(new SoalImport($request->paket_soal_id), $request->file('soal'));
 
-        return back();
+        return view('admin.soal.index');
     }
 
 

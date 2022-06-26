@@ -41,7 +41,7 @@ class SoalImport implements ToCollection, WithHeadingRow
     		$soalJawaban = [
         		'soal_id' => $soal->id,
         		'jawaban' => $rows[$index],
-        		'status' => $index == $jawaban ? 1 : 0
+                'status' => $index == strtolower($jawaban) ? 1 : 0
         	];		
 
 			SoalPilihan::create($soalJawaban);

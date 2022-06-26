@@ -52,7 +52,7 @@ class PaketSoalController extends Controller
 
     public function select2(Request $request)
     {
-        $data = PaketSoal::select('id', 'nama AS text')
+        $data = PaketSoal::select('id', 'judul AS text')
             ->where([
                 'kelas_id' => $request->kelas_id,
                 'mapel_id' => $request->mapel_id
