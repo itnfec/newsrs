@@ -5,8 +5,6 @@ var table = $('#table').DataTable({
     processing: true,
     responsive: true,
     serverSide: true,
-    lengthChange: false,
-        buttons: ['copy', 'excel', 'pdf', 'colvis'],
     ajax: {
         url: URL_ADMIN + '/paket-soal/datatable'
     },

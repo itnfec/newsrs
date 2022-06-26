@@ -4,6 +4,7 @@ import '../partials/select_paket_soal'
 
 const table = $('#table').DataTable({
     processing: true,
+    responsive: true,
     serverSide: true,
     ajax: {
         url: URL_ADMIN + '/soal/datatable',
@@ -14,12 +15,16 @@ const table = $('#table').DataTable({
         }
     },
     columns: [
-        { data: 'index', name: 'id' },
-        { data: 'paket_soal.nama', name: 'paketSoal.nama' },
-        { data: 'pertanyaan', name: 'soal' },
-        { data: 'jenis', name: 'jenis' },
-        { data: 'index', name: 'id' },
-        { data: 'index', name: 'id' },
+        {
+            data: 'pertanyaan',
+            name: 'soal'
+        }, {
+            data: 'paket_soal.judul',
+            name: 'paketSoal.nama'
+        }, {
+            data: 'jenis',
+            name: 'jenis'
+        },
     ]
 })
 

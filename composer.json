@@ -14,7 +14,7 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
         "spiral/roadrunner": "^2.8.2",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

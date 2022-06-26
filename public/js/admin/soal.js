@@ -159,6 +159,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var table = $('#table').DataTable({
   processing: true,
+  responsive: true,
   serverSide: true,
   ajax: {
     url: URL_ADMIN + '/soal/datatable',
@@ -169,23 +170,14 @@ var table = $('#table').DataTable({
     }
   },
   columns: [{
-    data: 'index',
-    name: 'id'
-  }, {
-    data: 'paket_soal.nama',
-    name: 'paketSoal.nama'
-  }, {
     data: 'pertanyaan',
     name: 'soal'
   }, {
+    data: 'paket_soal.judul',
+    name: 'paketSoal.nama'
+  }, {
     data: 'jenis',
     name: 'jenis'
-  }, {
-    data: 'index',
-    name: 'id'
-  }, {
-    data: 'index',
-    name: 'id'
   }]
 });
 $('.select-filter').on('change', function () {
