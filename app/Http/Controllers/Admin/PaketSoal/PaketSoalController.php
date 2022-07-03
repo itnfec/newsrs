@@ -78,7 +78,8 @@ class PaketSoalController extends Controller
      */
     public function store(Request $request)
     {
-        $description = $request->keterangan;
+       
+       $description = $request->keterangan;
  
        $dom = new \DomDocument();
  
@@ -112,8 +113,26 @@ class PaketSoalController extends Controller
 
         $description = $dom->saveHTML();
 
+        //image
+        $cover = $request->file('image');
+        if($cover != null){
+            $cover->storeAs('public/book_images', $cover->hashName());
+        }
+
         $request->keterangan = $description;
-        $paket = PaketSoal::create($request->all());
+
+        $paket = PaketSoal::create([
+            'judul'      => $request->judul,
+            'author'     => $request->author,
+            'publisher'  => $request->publisher,
+            'level'      => $request->level,
+            'point'      => $request->point,
+            'jenis'      => $request->jenis,
+            'kelas_id'   => $request->kelas_id,
+            'mapel_id'   => $request->mapel_id,
+            'keterangan' => $description,
+            'image'      => $cover == null ? '' : $cover->hashName()
+        ]);
 
         return response()->json([
             'status' => TRUE,
