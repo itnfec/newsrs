@@ -19,7 +19,7 @@ class RiwayatUjianController extends Controller
 
     public function dataTable()
     {
-        $data = Ujian::with('rombel:id,nama', 'paketSoal:id,nama')->has('ujianSiswa');
+        $data = Ujian::with('rombel:id,nama', 'paketSoal:id,judul')->has('ujianSiswa');
 
         return DataTables::of($data)
             ->addIndexColumn()

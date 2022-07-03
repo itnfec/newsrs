@@ -40,7 +40,7 @@
                 {data: 'index', name: 'id'},
                 {data: 'ujian.nama', name: 'ujian.nama'},
                 {data: 'ujian.paket_soal.mapel.nama', name: 'ujian.paketSoal.mapel.nama'},
-                {data: 'ujian.paket_soal.nama', name: 'ujian.paketSoal.nama'},
+                {data: 'ujian.paket_soal.judul', name: 'ujian.paketSoal.judul'},
                 {data: 'ujian.waktu_mulai', name: 'ujian.waktu_mulai'},
                 {data: 'ujian.durasi', name: 'ujian.durasi'},
                 {data: 'id'}

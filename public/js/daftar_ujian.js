@@ -20,8 +20,8 @@ var table = $('#table').DataTable({
     data: 'paket_soal.mapel.nama',
     name: 'paketSoal.mapel.nama'
   }, {
-    data: 'paket_soal.nama',
-    name: 'paketSoal.nama'
+    data: 'paket_soal.judul',
+    name: 'paketSoal.judul'
   }, {
     data: 'waktu_mulai',
     name: 'waktu_mulai'
@@ -42,7 +42,7 @@ table.on('click', '.btn-mulai', function () {
       $('#ujianNama').html(res.nama);
       $('#ujianKeterangan').html(res.keterangan);
       $('#ujianDurasi').html(res.durasi + ' Menit');
-      $('#ujianPaket').html(res.paket_soal.nama);
+      $('#ujianPaket').html(res.paket_soal.judul);
 
       if (res.token != null) {
         $('#divToken').removeClass('d-none').html("\n                <th>Token</th>\n                <td>\n                    <input type=\"text\" name=\"token\" class=\"form-control\" placeholder=\"Masukkan Token\" required>\n                </td>");
