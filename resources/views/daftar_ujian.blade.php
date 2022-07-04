@@ -5,31 +5,56 @@
     <div class="col-md-12">
 
         @foreach ($errors->all() as $error)
-            <div class="alert alert-warning">{!! $error !!}</div>
+        <div class="alert alert-warning">{!! $error !!}</div>
         @endforeach
 
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Daftar Ujian</h4>
+        <div class="row col-md-12">
+
+            @foreach($ujian as $data)
+            <div class="col-md-4">
+
+                <div class="card">
+                  <center><p class="card-text pt-2"><b>{{ $data->nama }}</b></p></center>
+                  <img class="card-img-top pt-2" src="{{$data->paketSoal->image}}" alt="Card image cap" style="width: 100%;
+                  height: 40vh;
+                  object-fit: cover;">
+                  <div class="card-body">
+                    <p class="card-text"> Mulai: {{ $data->waktu_mulai }}</p>
+                    <p class="card-text">Durasi:  {{ $data->durasi }} menit </p>
+                    <p class="card-text">Mapel: {{ $data->paketSoal->mapel->nama }}</p>
+                    <hr>
+
+                    <div class="text-right">
+                        @if($data->checkUjian($data->waktu_mulai))
+                        <a href="#" class="btn btn-primary btn-mulai px-5" data-id="{{ $data->id }}" >Mulai</a> 
+                        @else
+                        <button type="button" class="btn btn-primary" disabled>Mulai</button>
+                        @endif
+                    </div>
+
+                </div>
             </div>
-            <div class="card-body">
-                <table class="table table-striped display text-center w-100" id="table">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Ujian</th>
-                            <th>Mata Pelajaran</th>
-                            <th>Paket Soal</th>
-                            <th>Waktu Pelaksanaan</th>
-                            <th>Durasi</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+        </div>
+        @endforeach
+
+        <div>
         </div>
     </div>
 </div>
+
+</div>
+
+<div class="row col-md-12">
+    <div class="col-md-10">
+        
+    </div>
+
+    <div class="col">
+         {{ $ujian->links() }}
+    </div>
+
+</div>
+
 
 {{-- Modal mulai --}}
 <div class="modal fade" id="modalMulai">
@@ -77,5 +102,5 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('js/daftar_ujian.js') }}"></script>
+<script src="{{ asset('js/daftar_ujian.js') }}"></script>
 @endpush

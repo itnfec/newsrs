@@ -32,8 +32,9 @@ var table = $('#table').DataTable({
   }]
 });
 var modalMulai = $('#modalMulai');
-table.on('click', '.btn-mulai', function () {
+$( ".btn-mulai" ).click(function() {
   var data = $(this).data();
+ 
   console.log(data);
   $.post({
     url: '/daftar-ujian/' + data.id,
