@@ -13,7 +13,10 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
+        "nyholm/psr7": "^1.5",
         "spiral/roadrunner": "^2.8.2",
+        "spiral/roadrunner-http": "^2.1",
+        "spiral/roadrunner-metrics": "^2.0",
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
