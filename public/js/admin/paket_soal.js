@@ -138,6 +138,10 @@ var table = $('#table').DataTable({
   columns: [{
     data: 'opsi'
   }, {
+    data: 'image',  render: function( data, type, full, meta ) {
+        return "<img src=\"" + data + "\" height=\"50\"/>";
+        }
+  }, {
     data: 'judul'
   }, {
     data: 'author'

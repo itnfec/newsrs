@@ -174,7 +174,7 @@ var table = $('#table').DataTable({
     name: 'soal'
   }, {
     data: 'paket_soal.judul',
-    name: 'paketSoal.nama'
+    name: 'paketSoal.judul'
   }, {
     data: 'jenis',
     name: 'jenis'

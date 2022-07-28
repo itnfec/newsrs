@@ -12,7 +12,7 @@ class PaketSoal extends Model
 
     protected $table = 'paket_soal';
 
-    protected $fillable = ['judul', 'author', 'publisher', 'level', 'point', 'jenis','kelas_id','mapel_id'];
+    protected $fillable = ['judul', 'author', 'publisher', 'level', 'point', 'jenis','kelas_id','mapel_id', 'image', 'keterangan'];
 
     protected $guarded = [];
 
@@ -29,5 +29,10 @@ class PaketSoal extends Model
     public function soal()
     {
         return $this->hasMany(Soal::class);
+    }
+
+        public function getImageAttribute($image)
+    {
+        return asset('storage/book_images/' . $image);
     }
 }

@@ -25,6 +25,7 @@
                         <thead>
                             <tr>
                                 <th>Opsi</th>
+                                <th>Cover</th>
                                 <th>Judul</th>
                                 <th>Author</th>
                                 <th>publisher</th>
@@ -47,7 +48,7 @@
                     <h5 class="modal-title">Tambah Paket Soal</h5>
                     <button class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <form id="formTambah">
+                <form id="formTambah" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="addKelas">Kelas</label>
@@ -81,6 +82,12 @@
                             <label for="addJenis">Jenis</label>
                             <input type="text" name="jenis" class="form-control" id="addJenis" placeholder="Masukkan Jenis Paket">
                         </div>
+
+                        <div class="form-group">
+                            <label for="image">Cover Buku</label>
+                            <input type="file" class="form-control" name="image" id="image">
+                        </div>
+
                         <div class="form-group">
                             <label for="addKeterangan">Keterangan</label>
                             <textarea name="keterangan" cols="30" rows="5" class="form-control summernote" placeholder="Masukkan keterangan Paket Soal"></textarea>

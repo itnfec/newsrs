@@ -46,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">@yield('title', 'Selamat Datang')</h1>
+            <h1 class="m-0 text-dark">@yield('title', '')</h1>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

@@ -68,7 +68,7 @@ function loadSoal() {
 
       $('#ujianHasilId').val(data.id); // no soal
 
-      $('#noSoal').html(item.jawaban); // ragu ragu
+      $('#noSoal').html(data.jawaban); // ragu ragu
 
       btnRagu.data('id', data.id);
 
