@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\PaketSoal;
 use App\Http\Controllers\Controller;
 use App\Imports\PaketSoalImport;
 use App\Models\PaketSoal;
+use App\Models\Soal;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Maatwebsite\Excel\Facades\Excel;
@@ -27,12 +28,32 @@ class PaketSoalController extends Controller
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('opsi', function ($data) {
-                return '<button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
+                return '
+        <a href="' . url('admin/paket/'.$data->id.'/detail') . '" class="btn btn-xs btn-outline-primary"><i class="fas fa-edit"></i> Detail</a>
+                <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
             })
             ->rawColumns(['opsi'])
             ->make(true);
     }
 
+
+    public function soalDataTable($id){
+        $data = Soal::where('paket_soal_id', $id)->get();
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('opsi', function ($data) {
+                return '<a href="' . url('admin/paket/'.$data->id.'/detail') . '" class="btn btn-xs btn-outline-primary"><i class="fas fa-edit"></i> Detail</a>
+                <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
+            })
+            ->rawColumns(['opsi'])
+            ->make(true);
+    }
+
+
+    public function detail($id){
+        // return Soal::all();
+        return view('admin/paket_soal/detail', compact('id'));
+    }
 
 
     public function import()

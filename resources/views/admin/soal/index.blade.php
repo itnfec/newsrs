@@ -39,7 +39,6 @@
                     <table class="table table-striped display nowrap w-100" id="table">
                         <thead>
                             <tr>
-                                <th>No</th>
                                 <th>Paket Soal</th>
                                 <th>Soal</th>
                                 <th>Jenis</th>

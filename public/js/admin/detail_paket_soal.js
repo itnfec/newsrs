@@ -44,13 +44,6 @@ var selectMapel = $('.select-mapel').select2({
   }
 });
 
-/***/ }),
-
-/***/ "./resources/js/partials/select_paket_soal.js":
-/*!****************************************************!*\
-  !*** ./resources/js/partials/select_paket_soal.js ***!
-  \****************************************************/
-/***/ (() => {
 
 var selectPaketSoal = $('.select-paket-soal').select2({
   theme: 'bootstrap4',
@@ -69,6 +62,7 @@ var selectPaketSoal = $('.select-paket-soal').select2({
     }
   }
 });
+
 
 /***/ })
 
@@ -144,51 +138,90 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!************************************!*\
-  !*** ./resources/js/admin/soal.js ***!
-  \************************************/
+/*!******************************************!*\
+  !*** ./resources/js/admin/paket_soal.js ***!
+  \******************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_select_kelas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/select_kelas */ "./resources/js/partials/select_kelas.js");
 /* harmony import */ var _partials_select_kelas__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_partials_select_kelas__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _partials_select_mapel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../partials/select_mapel */ "./resources/js/partials/select_mapel.js");
 /* harmony import */ var _partials_select_mapel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partials_select_mapel__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../partials/select_paket_soal */ "./resources/js/partials/select_paket_soal.js");
-/* harmony import */ var _partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_2__);
 
-
-
-var table = $('#table').DataTable({
+var paketSoalId = document.getElementById('paket_soal_id').value;
+var table = $('#soal-table').DataTable({
   processing: true,
   responsive: true,
   serverSide: true,
   ajax: {
-    url: URL_ADMIN + '/soal/datatable',
-    data: function data(d) {
-      d.kelas_id = $('#selectKelas').val();
-      d.mapel_id = $('#selectMapel').val();
-      d.paket_soal_id = $('#selectPaket').val();
-    }
+    url: URL_ADMIN + '/paket-soal/soal/datatable/' + paketSoalId
   },
-  columns: [
-   {
-    data: 'paket_soal.judul',
-    name: 'paketSoal.judul'
-  },{
-    data: 'pertanyaan',
-    name: 'soal'
+  columns: [{
+    data: 'index',
+    name: 'id'
+  }, {
+    data: 'jenis'
+  }, {
+    data: 'pertanyaan'
   },
-   {
-    data: 'jenis',
-    name: 'jenis'
-  },
-   {
-    data: 'media',
-    name: 'media'
-  },
+  {
+    data: 'opsi',
+    name: 'id'
+  }
   ]
 });
-$('.select-filter').on('change', function () {
-  table.draw();
+
+var modalTambah = $('#modalTambah');
+
+var modalEdit = $('#modalEdit');
+$(document).on('click', '.btn-edit', function () {
+  var data = $(this).data();
+  console.info(data);
+  $('#editId').val(data.id);
+  $('#editKelas').append(new Option(data.kelasNama, data.kelasId, true, true));
+  $('#editMapel').append(new Option(data.mapelNama, data.mapelId, true, true));
+  $('#editKodePaket').val(data.kode);
+  $('#editNama').val(data.nama);
+  $('#editKeterangan').val(data.keterangan);
+  modalEdit.modal('show');
+});
+$('#formEdit').on('submit', function (e) {
+  e.preventDefault();
+  var form = new FormData(this);
+  form.append('_method', 'PUT');
+  $.post({
+    url: URL_ADMIN + '/paket-soal/' + $('#editId').val(),
+    processData: false,
+    contentType: false,
+    data: form,
+    success: function success(res) {
+      Swal.fire('Berhasil', 'Paket Soal berhasil diperbarui', 'success');
+      modalEdit.modal('hide');
+      table.draw();
+    }
+  });
+}); // Hapus Paket
+
+$(document).on('click', '.btn-hapus', function () {
+  var data = $(this).data();
+  Swal.fire({
+    title: "Hapus Paket Soal",
+    icon: 'question',
+    html: '<div class="alert alert-danger">Menghapus Paket Soal akan menghapus data launnya yang terkait</div>',
+    showCancelButton: true,
+    cancelButtonText: "Tidak",
+    confirmButtonText: "Ya, hapus!"
+  }).then(function (hapus) {
+    if (hapus.value) {
+      $.ajax({
+        url: URL_ADMIN + '/paket-soal/' + data.id,
+        type: 'DELETE',
+        success: function success(res) {
+          Swal.fire('Berhail', 'Paket Soal berhasil dihapus', 'success');
+          table.draw();
+        }
+      });
+    }
+  });
 });
 })();
 

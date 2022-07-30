@@ -59,17 +59,6 @@ var selectRombel = $('.select-rombel').select2({
   }
 });
 
-var addWaktuMulai = $('#duWaktuMulai').daterangepicker({
-  singleDatePicker: true,
-  timePicker: true,
-  timePicker24Hour: true,
-  startDate: new Date(),
-  minDate: new Date(),
-  locale: {
-    format: 'D-M-Y H:mm'
-  }
-});
-
 var selectMapel = $('.select-mapel').select2({
   theme: "bootstrap4",
   placeholder: "Pilih Mata Pelajaran",

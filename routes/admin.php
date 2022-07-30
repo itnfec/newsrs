@@ -52,8 +52,10 @@ Route::apiResource('mapel', 'Mapel\MapelController');
 
 // Paket Soal
 Route::match(['get', 'post'], 'paket-soal/datatable', 'PaketSoal\PaketSoalController@dataTable');
+Route::get('/paket-soal/soal/datatable/{id}', 'PaketSoal\PaketSoalController@soalDataTable')->name('paket.soal.datatable');
 Route::match(['get', 'post'], 'paket-soal/select2', 'PaketSoal\PaketSoalController@select2');
 Route::apiResource('paket-soal', 'PaketSoal\PaketSoalController');
+Route::get('paket/{id}/detail', 'PaketSoal\PaketSoalController@detail')->name('paket.detail');
 Route::get('paket-import', 'PaketSoal\PaketSoalController@import')->name('paket.import');
 Route::post('import-document-paket', 'PaketSoal\PaketSoalController@importDocument')->name('import.document.paket');
 
