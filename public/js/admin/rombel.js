@@ -146,6 +146,7 @@ $('#formTambah').on('submit', function (e) {
 var modalEdit = $('#modalEdit');
 $(document).on('click', '.btn-edit', function () {
   var data = $(this).data();
+  console.log(data);
   var option = new Option(data.kelasNama, data.kelasId, true, true);
   $('#editId').val(data.id);
   $('#editKelas').append(option).trigger('change');

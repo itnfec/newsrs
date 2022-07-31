@@ -51,8 +51,8 @@ class PaketSoalController extends Controller
 
 
     public function detail($id){
-        // return Soal::all();
-        return view('admin/paket_soal/detail', compact('id'));
+        $paket = PaketSoal::with('kelas','mapel')->where('id', $id)->first();
+        return view('admin/paket_soal/detail', compact('id', 'paket'));
     }
 
 

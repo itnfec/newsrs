@@ -62,7 +62,7 @@ Route::post('import-document-paket', 'PaketSoal\PaketSoalController@importDocume
 
 // Soal
 Route::match(['get', 'post'], 'soal/datatable', 'Soal\SoalController@dataTable');
-Route::get('soal-import', 'Soal\SoalController@import')->name('soal.import');
+Route::get('soal-import/{paketId?}', 'Soal\SoalController@import')->name('soal.import');
 Route::post('import', 'Soal\SoalController@importDocument')->name('import.document');
 
 
