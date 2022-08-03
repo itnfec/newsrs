@@ -7,6 +7,7 @@ use App\Imports\SoalImport;
 use App\Http\Requests\Admin\Soal\StoreSoalRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Soal;
+use App\Models\PaketSoal;
 use App\Models\SoalPilihan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -75,9 +76,16 @@ class SoalController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function import()
+    public function import($paketId = null)
     {
-        return view('admin.soal.import');
+        $paket = null;
+
+        if($paketId != null){
+            $paket = PaketSoal::with('kelas','mapel')->where('id', $paketId)->first();
+            return view('admin.soal.import', compact('paket'));            
+        }
+
+        return view('admin.soal.import', compact('paket'));
     }
 
 

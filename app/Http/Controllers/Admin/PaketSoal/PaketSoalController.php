@@ -64,11 +64,10 @@ class PaketSoalController extends Controller
 
     public function importDocument(Request $request)
     {
-
-        
+   
         Excel::import(new PaketSoalImport($request), $request->file('paket'));
 
-        return view('admin.paket_soal.index');
+        return redirect()->back()->with('success', 'import berhasil');   
     }
 
 
