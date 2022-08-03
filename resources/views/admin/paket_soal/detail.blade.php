@@ -17,7 +17,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="editKelas">Kelas</label>
-								<select name="kelas_id" id="editKelas" class="form-control select-kelas"></select>
+								<select name="kelas_id" id="editKelas" class="form-control select-kelas" ></select>
 						</div>
 					</div>
 					<div class="col-md-6">

@@ -60,7 +60,23 @@
 @push('script')
     <script src="{{ asset('assets/plugins/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('js/admin/soal_create.js') }}"></script>
+
     <script>
+
+        var paket = '{{ $paket }}';
+
+        if(paket != null){
+                var data = {!! json_encode($paket) !!};
+                var optionKelas = new Option(data.kelas.nama, data.kelas.id, true, true);
+                $('#selectKelas').append(optionKelas).trigger('change');
+
+                var optionMapel = new Option(data.mapel.nama, data.mapel.id, true, true);
+                $('#selectMapel').append(optionMapel).trigger('change');
+
+                var optionPaketSoal = new Option(data.judul, data.id, true, true);
+                $('#selectPaket').append(optionPaketSoal).trigger('change');
+        }        
+
         const btnTambahPilihan = $('#btnTambahPilihan')
         const divPilihanJawaban = $('#pilihanJawaban')
 
