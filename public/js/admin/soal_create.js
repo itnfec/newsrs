@@ -30,35 +30,6 @@ var selectKelas = $('.select-kelas').select2({
   \***********************************************/
 /***/ (() => {
 
-var selectRombel = $('.select-rombel').select2({
-  theme: 'bootstrap4',
-  placeholder: 'Pilih Rombongan Belajar',
-  allowClear: true,
-  ajax: {
-    url: URL_ADMIN + '/rombel/select2',
-    dataType: 'json',
-    data: function data(params) {
-      return {
-        term: params.term,
-        kelas_id: $('.select-kelas').val()
-      };
-    },
-    processResults: function processResults(data) {
-      console.log(data);
-      var results = [];
-      data.results.forEach(function (item, index) {
-        results.push({
-          id: item.id,
-          text: item.kelas.nama + ' ' + item.text
-        });
-      });
-      return {
-        results: results
-      };
-    }
-  }
-});
-
 var selectMapel = $('.select-mapel').select2({
   theme: "bootstrap4",
   placeholder: "Pilih Mata Pelajaran",

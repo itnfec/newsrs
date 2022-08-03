@@ -211,7 +211,7 @@ var table = $('#table').DataTable({
   }, {
     data: 'rombel.nama'
   }, {
-    data: 'paket_soal.judul'
+    data: 'paket_soal.nama'
   }, {
     data: 'waktu_mulai'
   }, {
