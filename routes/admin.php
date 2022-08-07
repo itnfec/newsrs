@@ -58,6 +58,7 @@ Route::apiResource('paket-soal', 'PaketSoal\PaketSoalController');
 Route::get('paket/{id}/detail', 'PaketSoal\PaketSoalController@detail')->name('paket.detail');
 Route::get('paket-import', 'PaketSoal\PaketSoalController@import')->name('paket.import');
 Route::post('import-document-paket', 'PaketSoal\PaketSoalController@importDocument')->name('import.document.paket');
+Route::post('paket-soal-update', 'PaketSoal\PaketSoalController@updatePaketSoal')->name('paket.soal.update');
 
 
 // Soal
