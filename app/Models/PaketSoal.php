@@ -33,6 +33,10 @@ class PaketSoal extends Model
 
         public function getImageAttribute($image)
     {
-        return asset('storage/book_images/' . $image);
+        if($image != null){
+            return asset('storage/book_images/' . $image);
+        }else{
+            return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiQc9dZn33Wnk-j0sXZ19f8NiMZpJys7nTlA&usqp=CAU';
+        }
     }
 }

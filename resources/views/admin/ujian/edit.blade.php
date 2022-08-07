@@ -127,6 +127,19 @@
 <script src="{{ asset('assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('js/admin/ujian.js') }}"></script>
 <script>
-    $('#selectKelas').append(new Option({{ $data->name }}, data.kelasId, true, true))
+    var data = {!! json_encode($data->toArray()) !!};
+    
+    var optionKelas = new Option(data.rombel.kelas.nama, data.rombel.kelas.id, true, true);
+    $('#selectKelas').append(optionKelas).trigger('change');
+    
+    var optionMapel = new Option(data.paket_soal.mapel.nama, data.paket_soal.mapel.id, true, true);
+    $('#selectMapel').append(optionMapel).trigger('change');
+
+    var optionRombel = new Option(data.rombel.nama, data.rombel.id, true, true);
+    $('#selectRombel').append(optionRombel).trigger('change');
+    
+    var optionPaketSoal = new Option(data.paket_soal.judul, data.paket_soal.id, true, true);
+    $('#selectPaket').append(optionPaketSoal).trigger('change');
+
 </script>
 @endpush
