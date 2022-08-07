@@ -9,6 +9,7 @@ use App\Models\Soal;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class PaketSoalController extends Controller
 {
@@ -182,6 +183,61 @@ class PaketSoalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function updatePaketSoal(Request $request){
+        $paket = PaketSoal::findOrFail($request->id);
+        $id = $paket->id;
+
+        $this->validate($request, [
+            'image' => 'image|mimes:jpeg,jpg,png|max:2000',
+        ]); 
+
+        if($request->file('image') == '') {            
+             $paket->update([
+                'judul'   => $request->judul,
+                'author'   => $request->author,
+                'publisher'   => $request->publisher,
+                'level'   => $request->level,
+                'jenis'   => $request->jenis,
+                'point'   => $request->point,
+                'keterangan'   => $request->keterangan,
+                'kelas_id'   => $request->kelas_id,
+                'mapel_id'   => $request->mapel_id
+            ]);
+
+        } else {
+
+            Storage::disk('local')->delete('public/book_images/'.basename($paket->image));
+            $image = $request->file('image');            
+            $image->storeAs('public/book_images', $image->hashName());
+
+            $paket->update([
+                'image'  => $image->hashName(),
+                'judul'   => $request->judul,
+                'author'   => $request->author,
+                'publisher'   => $request->publisher,
+                'level'   => $request->level,
+                'point'   => $request->point,
+                'jenis'   => $request->jenis,                
+                'keterangan'   => $request->keterangan,
+                'kelas_id'   => $request->kelas_id,
+                'mapel_id'   => $request->mapel_id
+            ]);
+
+        }
+
+        if($paket){
+            //redirect dengan pesan sukses
+            return redirect()->route('paket.detail',compact('id', 'paket'))->with(['success' => 'Data Berhasil Diupdate!']);
+        }else{
+
+            //redirect dengan pesan error
+            return redirect()->route('paket.detail',compact('id', 'paket'))->with(['error' => 'Data Gagal Diupdate!']);
+        }
+
+    }
+
     public function update(Request $request, $id)
     {
         $data = PaketSoal::where('id', $id)->update($request->except('_method'));
