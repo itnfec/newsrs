@@ -70,6 +70,43 @@ var selectPaketSoal = $('.select-paket-soal').select2({
   }
 });
 
+/***/ }),
+
+/***/ "./resources/js/partials/select_rombel.js":
+/*!************************************************!*\
+  !*** ./resources/js/partials/select_rombel.js ***!
+  \************************************************/
+/***/ (() => {
+
+var selectRombel = $('.select-rombel').select2({
+  theme: 'bootstrap4',
+  placeholder: 'Pilih Rombongan Belajar',
+  allowClear: true,
+  ajax: {
+    url: URL_ADMIN + '/rombel/select2',
+    dataType: 'json',
+    data: function data(params) {
+      return {
+        term: params.term,
+        kelas_id: $('.select-kelas').val()
+      };
+    },
+    processResults: function processResults(data) {
+      console.log(data);
+      var results = [];
+      data.results.forEach(function (item, index) {
+        results.push({
+          id: item.id,
+          text: item.kelas.nama + ' ' + item.text
+        });
+      });
+      return {
+        results: results
+      };
+    }
+  }
+});
+
 /***/ })
 
 /******/ 	});
@@ -152,11 +189,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_select_kelas__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_partials_select_kelas__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _partials_select_mapel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../partials/select_mapel */ "./resources/js/partials/select_mapel.js");
 /* harmony import */ var _partials_select_mapel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partials_select_mapel__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../partials/select_paket_soal */ "./resources/js/partials/select_paket_soal.js");
-/* harmony import */ var _partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _partials_select_rombel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../partials/select_rombel */ "./resources/js/partials/select_rombel.js");
+/* harmony import */ var _partials_select_rombel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_partials_select_rombel__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../partials/select_paket_soal */ "./resources/js/partials/select_paket_soal.js");
+/* harmony import */ var _partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_partials_select_paket_soal__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
+
+var addWaktuMulai = $('#addWaktu').daterangepicker({
+  singleDatePicker: true,
+  timePicker: true,
+  timePicker24Hour: true,
+  startDate: new Date(),
+  minDate: new Date(),
+  locale: {
+    format: 'D-M-Y H:mm'
+  }
+});
+$('#tes').daterangepicker();
 })();
 
 /******/ })()
