@@ -105,6 +105,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
     });
 
+    $('.summernote').summernote({
+        height: 300
+    });
+
     // Datatable
     $.extend( true, $.fn.dataTable.defaults, {
         language: {

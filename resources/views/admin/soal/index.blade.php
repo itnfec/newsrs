@@ -42,7 +42,6 @@
                                 <th>Paket Soal</th>
                                 <th>Soal</th>
                                 <th>Jenis</th>
-                                <th>Media</th>
                                 <th>Opsi</th>
                             </tr>
                         </thead>

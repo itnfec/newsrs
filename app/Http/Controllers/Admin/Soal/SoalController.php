@@ -51,7 +51,11 @@ class SoalController extends Controller
             ->editColumn('jenis', function ($data) {
                 return ucwords(implode(' ', explode('_', $data->jenis)));
             })
-            ->rawColumns(['pertanyaan'])
+            ->addColumn('opsi', function ($data) {
+                return '<a href="' . url('admin/soal/'.$data->id.'/detail') . '" class="btn btn-xs btn-outline-primary"><i class="fas fa-edit"></i> Detail</a>
+                <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
+            })
+            ->rawColumns(['opsi','pertanyaan'])
             ->make(true);
     }
 
@@ -90,7 +94,7 @@ class SoalController extends Controller
 
         Excel::import(new SoalImport($request->paket_soal_id), $request->file('soal'));
 
-        return view('admin.soal.index');
+        return redirect('admin/soal');
     }
 
 
@@ -174,8 +178,13 @@ class SoalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Soal $soal)
     {
-        //
+        $soal->delete();
+
+        return response()->json([
+            'status' => TRUE,
+            'data' => $soal,
+        ], 200);
     }
 }

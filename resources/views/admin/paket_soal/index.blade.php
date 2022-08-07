@@ -25,7 +25,6 @@
                         <thead>
                             <tr>
                                 <th>Opsi</th>
-                                <th>Cover</th>
                                 <th>Judul</th>
                                 <th>Author</th>
                                 <th>publisher</th>
