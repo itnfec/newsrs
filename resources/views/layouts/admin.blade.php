@@ -29,6 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   {{-- Select2 --}}
   <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/plugins/summernote/summernote-bs4.min.css') }}">
   @stack('style')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -95,6 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+<script src="{{ asset('assets/plugins/summernote/summernote-bs4.js') }}"></script>
 {{-- Select2 --}}
 <script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
 <script>
