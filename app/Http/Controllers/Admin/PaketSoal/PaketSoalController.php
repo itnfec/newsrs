@@ -46,7 +46,7 @@ class PaketSoalController extends Controller
                 return '<a href="' . url('admin/paket/'.$data->id.'/detail') . '" class="btn btn-xs btn-outline-primary"><i class="fas fa-edit"></i> Detail</a>
                 <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="' . $data->id . '"><i class="fas fa-trash"></i> Hapus</button>';
             })
-            ->rawColumns(['opsi'])
+            ->rawColumns(['opsi', 'pertanyaan'])
             ->make(true);
     }
 

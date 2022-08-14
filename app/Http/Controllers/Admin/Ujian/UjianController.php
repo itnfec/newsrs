@@ -102,7 +102,7 @@ class UjianController extends Controller
      */
     public function edit($id)
     {
-        $data = Ujian::find($id);
+        $data = Ujian::with('rombel.kelas', 'paketSoal.mapel')->where('id', $id)->first();
         return view('admin.ujian.edit', compact('data'));
     }
 

@@ -11,6 +11,6 @@ class Kelas extends Model
     use HasFactory, UuidTrait;
 
     protected $table = 'kelas';
-
+  	protected $fillable = ['nama'];
     protected $guarded = [];
 }

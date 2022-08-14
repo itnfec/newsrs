@@ -75,18 +75,16 @@
 				</div>
 				
 				<div class="col-md-6 pt-5">
-					@if(file_exists($paket->image))
-					    <img src="{{ $paket->image }}">
-					@else 
-					    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiQc9dZn33Wnk-j0sXZ19f8NiMZpJys7nTlA&usqp=CAU">
-					@endif
+						<div class="container">
+							<img src="{{ $paket->image }}" class="px-4 py-4 card img-fluid">
+						</div>
 				</div>
 				
 
 				<div class="col-md-12 pt-3" >
 					<label for="addKeterangan">Keterangan</label>
 					<textarea name="keterangan" cols="30" rows="5" value="{{ $paket->keterangan ?? '' }}" class="form-control summernote" placeholder="Masukkan keterangan Paket Soal">
-						{{ $paket->keterangan ?? '' }}
+						{!! $paket->keterangan ?? '' !!}
 					</textarea>
 				</div>
 				<div class="col-md-12 pt-4 " >
