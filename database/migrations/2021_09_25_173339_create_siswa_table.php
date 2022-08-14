@@ -22,7 +22,7 @@ class CreateSiswaTable extends Migration
             $table->string('foto')->nullable();
             $table->timestamps();
 
-            $table->foreignUuid('rombel_id')->on('rombel')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignUuid('level_id')->on('levels')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreignUuid('domain_id')->on('domain')->nullable();
         });
     }

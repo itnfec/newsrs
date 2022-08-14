@@ -11,8 +11,8 @@ const table = $('#table').DataTable({
         {
             data: 'domain_id'
             }, {
-            data: 'rombel.nama', name: 'rombel.nama', render: function(data, type, row) {
-                return row.rombel.kelas.nama + ' ' + data;
+            data: 'level.name', name: 'level.name', render: function(data, type, row) {
+                return row.level.name + ' ' + data;
             }
         },
         { data: 'nama' },

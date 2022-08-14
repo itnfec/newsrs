@@ -2,16 +2,17 @@ const table = $('#table').DataTable({
     processing: true,
     serverSide: true,
     ajax: {
-        url: URL_ADMIN + '/kelas/datatable'
+        url: URL_ADMIN + '/level/datatable'
     },
     columns: [
         { data: 'index', name: 'id' },
-        { data: 'nama' },
+        { data: 'name' },
+        { data: 'point' },
         { data: 'opsi', name: 'id' }
     ]
 })
 
-// Tambah Kelas
+// Tambah level
 const modalTambah = $('#modalTambah')
 const formTambah = document.getElementById('formTambah')
 formTambah.addEventListener('submit', function (e) {
@@ -19,7 +20,7 @@ formTambah.addEventListener('submit', function (e) {
     const form = new FormData(this)
 
     $.post({
-        url: URL_ADMIN + '/kelas',
+        url: URL_ADMIN + '/level',
         processData: false,
         contentType: false,
         data: form,
@@ -27,19 +28,20 @@ formTambah.addEventListener('submit', function (e) {
             $(this).trigger('reset')
             modalTambah.modal('hide')
             table.draw()
-            Swal.fire('Berhasil', 'Kelas berhasil ditambahkan', 'success')
+            Swal.fire('Berhasil', 'level berhasil ditambahkan', 'success')
         }
     })
 })
 
-// Edit Kelas
+// Edit Level
 const modalEdit = $('#modalEdit')
 const formEdit = document.getElementById('formEdit')
 $(document).on('click', '.btn-edit', function () {
     const data = $(this).data()
 
     $('#editId').val(data.id)
-    $('#editNama').val(data.nama)
+    $('#editName').val(data.nama)
+    $('#editPoint').val(data.point)
 
     modalEdit.modal('show')
 })
@@ -50,25 +52,25 @@ formEdit.addEventListener('submit', function (e) {
     const form = new FormData(this)
 
     $.post({
-        url: URL_ADMIN + '/kelas/' + id,
+        url: URL_ADMIN + '/level/' + id,
         processData: false,
         contentType: false,
         data: form,
         success: function (res) {
-            Swal.fire('Berhasil', 'Kelas berhasil diperbarui', 'success')
+            Swal.fire('Berhasil', 'level berhasil diperbarui', 'success')
             table.draw()
             modalEdit.modal('hide')
         }
     })
 })
 
-// Hapus Kelas
+// Hapus level
 $(document).on('click', '.btn-hapus', function () {
     const data = $(this).data()
 
     Swal.fire({
-        title: "Hapus Kelas?",
-        html: '<div class="alert alert-danger">Menghapus kelas akan menghapus data lainnya yang terkait</div>',
+        title: "Hapus level?",
+        html: '<div class="alert alert-danger">Menghapus level akan menghapus data lainnya yang terkait</div>',
         icon: "question",
         showCancelButton: true,
         cancelButtonText: "Tidak",
@@ -76,11 +78,11 @@ $(document).on('click', '.btn-hapus', function () {
     }).then(hapus => {
         if (hapus.value) {
             $.ajax({
-                url: URL_ADMIN + '/kelas/' + data.id,
+                url: URL_ADMIN + '/level/' + data.id,
                 type: "DELETE",
                 success: function (res) {
                     if (res.status) {
-                        Swal.fire("Berhasil", 'Kelas berhasil dihapus', 'success')
+                        Swal.fire("Berhasil", 'level berhasil dihapus', 'success')
                         table.draw()
                     }
                 }

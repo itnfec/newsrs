@@ -6,16 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\UuidTrait;
 
-class Rombel extends Model
+class Level extends Model
 {
-    use HasFactory, UuidTrait;
+ use HasFactory, UuidTrait;
 
-    protected $table = 'rombel';
 
+  	protected $fillable = ['name, point'];
     protected $guarded = [];
-
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class);
-    }
 }

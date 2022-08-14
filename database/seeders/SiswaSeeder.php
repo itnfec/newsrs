@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Kelas;
-use App\Models\Rombel;
+use App\Models\Level;
 use App\Models\Siswa;
 use App\Models\Tenant;
 use Faker\Factory;
@@ -21,13 +21,13 @@ class SiswaSeeder extends Seeder
     public function run()
     {
         $domain = Domain::all();
-        $rombel = Rombel::first();
+        $level = Level::first();
         foreach ($domain as $key => $value) {
             for ($i = 0; $i < 5; $i++) {
                 $nis = 10000 . $i;
 
                 $siswa = new Siswa;
-                $siswa->rombel_id = $rombel->id;
+                $siswa->level_id = $level->id;
                 $siswa->domain_id = $value->id;
                 $siswa->nama = " Siswa $i";
                 $siswa->nis = (int)$nis;

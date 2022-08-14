@@ -18,8 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PengaturanSeeder::class);
         $this->call(DomainSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(KelasSeeder::class);
-        $this->call(RombelSeeder::class);
+        $this->call(LevelSeeder::class);
         $this->call(SiswaSeeder::class);
         $this->call(MapelSeeder::class);
     }

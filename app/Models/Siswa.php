@@ -16,9 +16,9 @@ class Siswa extends Authenticatable
 
     protected $guarded = [];
 
-    public function rombel()
+    public function level()
     {
-        return $this->belongsTo(Rombel::class);
+        return $this->belongsTo(Level::class);
     }
 
     public function domain()

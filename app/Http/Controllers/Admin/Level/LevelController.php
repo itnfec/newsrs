@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Kelas;
+namespace App\Http\Controllers\Admin\Level;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kelas;
+use App\Models\Level;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class KelasController extends Controller
+class LevelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +16,15 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('admin.kelas.index');
+        return view('admin.level.index');
     }
 
     public function dataTable()
     {
-        return DataTables::of(Kelas::query())
+        return DataTables::of(Level::query())
             ->addIndexColumn()
             ->addColumn('opsi', function ($data) {
-                return '<button class="btn btn-xs btn-outline-warning btn-edit" data-id="'.$data->id.'" data-nama="'.$data->nama.'"><i class="fas fa-edit"></i> Edit</button>
+                return '<button class="btn btn-xs btn-outline-warning btn-edit" data-id="'.$data->id.'" data-nama="'.$data->name.'"><i class="fas fa-edit"></i> Edit</button>
                 <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="'.$data->id.'"><i class="fas fa-trash"></i> Hapus</button>';
             })
             ->rawColumns(['opsi'])
@@ -33,11 +33,11 @@ class KelasController extends Controller
 
     public function select2()
     {
-        $kelas = Kelas::select('id', 'nama as text')->get();
+        $level = Level::select('id', 'name as text')->get();
 
         return response()->json([
             'status' => TRUE,
-            'results' => $kelas
+            'results' => $level
         ], 200);
     }
 
@@ -49,11 +49,14 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $kelas = Kelas::create($request->all());
+        $level = new Level;
+        $level->name = $request->name;
+        $level->point = $request->point;
+        $level->save();
 
         return response()->json([
             'status' => TRUE,
-            'data' => $kelas
+            'data' => $level
         ], 200);
     }
 
@@ -63,11 +66,11 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelas $kelas)
+    public function show(Level $level)
     {
         return response()->json([
             'status' => TRUE,
-            'data' => $kelas
+            'data' => $level
         ], 200);
     }
 
@@ -80,11 +83,14 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $kelas = Kelas::where('id', $id)->update($request->except('_method'));
+        $level = Level::where('id', $id)->first();
+        $level->name = $request->name;
+        $level->point = $request->point;
+        $level->save();
 
         return response()->json([
             'status' => TRUE,
-            'data' => $kelas
+            'data' => $level
         ], 200);
     }
 
@@ -94,10 +100,12 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy($id)
     {
-        $kelas->delete();
 
+        $level = Level::findOrFail($id);
+        $level->delete();
+    
         return response()->json([
             'status' => TRUE
         ], 200);

@@ -23,11 +23,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // Kelas
-Route::match(['get', 'post'], 'kelas/datatable', 'Kelas\KelasController@dataTable');
-Route::match(['get', 'post'], 'kelas/select2', 'Kelas\KelasController@select2');
-Route::apiResource('kelas', 'Kelas\KelasController', [
+Route::match(['get', 'post'], 'level/datatable', 'Level\LevelController@dataTable');
+Route::match(['get', 'post'], 'level/select2', 'Level\LevelController@select2');
+Route::apiResource('level', 'Level\LevelController', [
     'parameters' => [
-        'kelas' => 'kelas'
+        'level' => 'level'
     ]
 ]);
 

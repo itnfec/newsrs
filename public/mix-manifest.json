@@ -1,6 +1,5 @@
 {
-    "/js/admin/kelas.js": "/js/admin/kelas.js",
-    "/js/admin/rombel.js": "/js/admin/rombel.js",
+    "/js/admin/level.js": "/js/admin/level.js",
     "/js/admin/siswa.js": "/js/admin/siswa.js",
     "/js/admin/mapel.js": "/js/admin/mapel.js",
     "/js/admin/paket_soal.js": "/js/admin/paket_soal.js",

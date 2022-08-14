@@ -129,10 +129,10 @@ var table = $('#table').DataTable({
   }, {
     data: 'domain_id'
   }, {
-    data: 'rombel.nama',
-    name: 'rombel.nama',
+    data: 'level.name',
+    name: 'level.name',
     render: function render(data, type, row) {
-      return row.rombel.kelas.nama + ' ' + data;
+      return row.level.name + ' ' + data;
     }
   }, {
     data: 'nama'

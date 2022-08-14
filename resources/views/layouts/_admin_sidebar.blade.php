@@ -26,20 +26,11 @@
                     DATA MASTER
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('kelas.index') }}"
-                        class="nav-link {{ request()->routeIs('kelas.index') ? 'active' : '' }}">
+                    <a href="{{ route('level.index') }}"
+                        class="nav-link {{ request()->routeIs('level.index') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Kelas
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('rombel.index') }}"
-                        class="nav-link {{ request()->routeIs('rombel.index') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Rombel
+                            Level
                         </p>
                     </a>
                 </li>

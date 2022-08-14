@@ -97,7 +97,7 @@ var selectRombel = $('.select-rombel').select2({
       data.results.forEach(function (item, index) {
         results.push({
           id: item.id,
-          text: item.text
+          text: item.kelas.nama + ' ' + item.text
         });
       });
       return {
@@ -211,7 +211,7 @@ var table = $('#table').DataTable({
   }, {
     data: 'rombel.nama'
   }, {
-    data: 'paket_soal.judul'
+    data: 'paket_soal.nama'
   }, {
     data: 'waktu_mulai'
   }, {

@@ -22,11 +22,8 @@ const resource = 'resources/js/';
  | Admin
 */
 
-// Kelas
-mix.js(resource + 'admin/kelas.js', 'public/js/admin/kelas.js');
-
-// Rombel
-mix.js(resource + 'admin/rombel.js', 'public/js/admin/rombel.js');
+// Level
+mix.js(resource + 'admin/level.js', 'public/js/admin/level.js');
 
 // Siswa
 mix.js(resource + 'admin/siswa.js', 'public/js/admin/siswa.js');
