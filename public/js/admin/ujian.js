@@ -209,7 +209,7 @@ var table = $('#table').DataTable({
   }, {
     data: 'nama'
   }, {
-    data: 'rombel.nama'
+    data: 'rombel.judul'
   }, {
     data: 'paket_soal.nama'
   }, {

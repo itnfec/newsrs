@@ -12,7 +12,9 @@ const table = $('#table').DataTable({
     columns: [
         {data: 'index', name: 'id'},
         {data: 'nama'},
-        {data: 'rombel.nama'},
+        {
+            data: 'rombel.judul'
+        },
         {data: 'paket_soal.nama'},
         {data: 'waktu_mulai'},
         {data: 'opsi'},

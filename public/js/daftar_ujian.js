@@ -31,18 +31,27 @@ var table = $('#table').DataTable({
     data: 'btnMulai'
   }]
 });
-var modalMulai = $('#modalMulai');
-table.on('click', '.btn-mulai', function () {
-  var data = $(this).data();
-  console.log(data);
+var modalMulai = $('#modalMulai').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
   $.post({
-    url: '/daftar-ujian/' + data.id,
+    url: '/daftar-ujian/' + button.data('id'),
     success: function success(res) {
+      // var id = button.data('id')
+      // var durasi = button.data('duration')
+      // var mapel = button.data('mapel')
+      // var judul = button.data('judul')
+      // var keterangan = button.data('keterangan')
+      // var modal = $(this)
+      // modal.find('#ujianNama').text(judul)
+      // modal.find('#ujianKeterangan').html(keterangan)
+      // modal.find('#ujianDurasi').text(durasi + " Menit")
+      // modal.find('#ujianPaket').text(mapel)
+      // modal.find('#ujianId').text(id)
       $('#ujianId').val(res.id);
       $('#ujianNama').html(res.nama);
       $('#ujianKeterangan').html(res.keterangan);
       $('#ujianDurasi').html(res.durasi + ' Menit');
-      $('#ujianPaket').html(res.paket_soal.nama);
+      $('#ujianPaket').html("<h4 class='text-capitalize'>" + res.paket_soal.judul + "</h4>");
 
       if (res.token != null) {
         $('#divToken').removeClass('d-none').html("\n                <th>Token</th>\n                <td>\n                    <input type=\"text\" name=\"token\" class=\"form-control\" placeholder=\"Masukkan Token\" required>\n                </td>");
@@ -51,7 +60,6 @@ table.on('click', '.btn-mulai', function () {
       }
     }
   });
-  modalMulai.modal('show');
 });
 /******/ })()
 ;
