@@ -5,13 +5,15 @@
         <div class="col-md-12">
             <div id="accordion">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">
-                            <a class="text-dark" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                Detail Ujian
-                            </a>
-                        </h4>
-                    </div>
+                    <a class="text-dark" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        <div class="card-header">
+                            <h4 class="card-title">
+                                    Detail Ujian [{{ $ujianSiswa->ujian->paketSoal->judul }}]
+
+                            </h4>
+                            <div class="float-right text-primary">Klik Untuk Lihat Detail</div><br>
+                        </div>
+                    </a>
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="card-body">
                             <div class="row">
@@ -20,15 +22,11 @@
                                         <thead>
                                             <tr>
                                                 <th>Nama Ujian</th>
-                                                <td>{{ $ujianSiswa->ujian->nama }}</td>
+                                                <td>{{ $ujianSiswa->ujian->paketSoal->judul }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Keterangan</th>
-                                                <td>{{ $ujianSiswa->ujian->keterangan }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Paket Soal</th>
-                                                <td>{{ $ujianSiswa->ujian->paketSoal->nama }}</td>
+                                                <td>{!! $ujianSiswa->ujian->keterangan !!}</td>
                                             </tr>
                                         </thead>
                                     </table>
@@ -38,11 +36,11 @@
                                         <thead>
                                             <tr>
                                                 <th>Waktu Mulai</th>
-                                                <td>{{ $ujianSiswa->mulai }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($ujianSiswa->mulai)->diffForHumans() }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Waktu Selesai</th>
-                                                <td>{{ $ujianSiswa->selesai }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($ujianSiswa->selesai)->format('H:i:s') }}</td>
                                             </tr>
                                         </thead>
                                     </table>
