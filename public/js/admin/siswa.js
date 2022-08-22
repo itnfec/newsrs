@@ -1,36 +1,21 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/js/partials/select_rombel.js":
-/*!************************************************!*\
-  !*** ./resources/js/partials/select_rombel.js ***!
-  \************************************************/
+/***/ "./resources/js/partials/select_level.js":
+/*!***********************************************!*\
+  !*** ./resources/js/partials/select_level.js ***!
+  \***********************************************/
 /***/ (() => {
 
-var selectRombel = $('.select-rombel').select2({
+var selectLevel = $('.select-level').select2({
   theme: 'bootstrap4',
-  placeholder: 'Pilih Rombongan Belajar',
-  allowClear: true,
+  placeholder: 'Pilih Level',
   ajax: {
-    url: URL_ADMIN + '/rombel/select2',
+    url: URL_ADMIN + '/level/select2',
     dataType: 'json',
     data: function data(params) {
       return {
-        term: params.term,
-        kelas_id: $('.select-kelas').val()
-      };
-    },
-    processResults: function processResults(data) {
-      console.log(data);
-      var results = [];
-      data.results.forEach(function (item, index) {
-        results.push({
-          id: item.id,
-          text: item.kelas.nama + ' ' + item.text
-        });
-      });
-      return {
-        results: results
+        term: params.term
       };
     }
   }
@@ -114,8 +99,8 @@ var __webpack_exports__ = {};
   !*** ./resources/js/admin/siswa.js ***!
   \*************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _partials_select_rombel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/select_rombel */ "./resources/js/partials/select_rombel.js");
-/* harmony import */ var _partials_select_rombel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_partials_select_rombel__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partials_select_level__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/select_level */ "./resources/js/partials/select_level.js");
+/* harmony import */ var _partials_select_level__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_partials_select_level__WEBPACK_IMPORTED_MODULE_0__);
 
 var table = $('#table').DataTable({
   processing: true,
@@ -129,11 +114,7 @@ var table = $('#table').DataTable({
   }, {
     data: 'domain_id'
   }, {
-    data: 'level.name',
-    name: 'level.name',
-    render: function render(data, type, row) {
-      return row.level.name + ' ' + data;
-    }
+    data: 'level.name'
   }, {
     data: 'nama'
   }, {
@@ -167,9 +148,9 @@ var modalEdit = $('#modalEdit');
 $(document).on('click', '.btn-edit', function () {
   var data = $(this).data();
   console.log(data);
-  var option = new Option(data.rombelNama, data.rombelId, true, true);
+  var option = new Option(data.levelName, data.levelId, true, true);
   $('#editId').val(data.id);
-  $('#editRombel').append(option).trigger('change');
+  $('#editLevel').append(option).trigger('change');
   $('#editNama').val(data.nama);
   $('#editNis').val(data.nis);
   $('#editJenisKelamin').val(data.jenisKelamin).trigger('change');

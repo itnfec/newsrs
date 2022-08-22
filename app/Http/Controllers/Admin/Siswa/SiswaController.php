@@ -20,7 +20,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('admin.siswa.index');
+       return view('admin.siswa.index');
     }
 
     public function dataTable()
@@ -28,7 +28,7 @@ class SiswaController extends Controller
         return DataTables::of(Siswa::with(['level','domain']))
             ->addIndexColumn()
             ->addColumn('opsi', function ($data) {
-                return '<button class="btn btn-xs btn-outline-warning btn-edit" data-id="'.$data->id.'" data-rombel-id="'.$data->level->id.'" data-rombel-nama="'.$data->level->nama.'" data-nama="'.$data->nama.'" data-nis="'.$data->nis.'" data-jenis-kelamin="'.$data->jenis_kelamin.'"><i class="fas fa-edit"></i> Edit</button>
+                return '<button class="btn btn-xs btn-outline-warning btn-edit" data-id="'.$data->id.'" data-level-id="'.$data->level->id.'" data-level-name="'.$data->level->name.'" data-nama="'.$data->nama.'" data-nis="'.$data->nis.'" data-jenis-kelamin="'.$data->jenis_kelamin.'"><i class="fas fa-edit"></i> Edit</button>
                 <button class="btn btn-xs btn-outline-danger btn-hapus" data-id="'.$data->id.'"><i class="fas fa-trash"></i> Hapus</button>';
             })
             ->addColumn('domain_id', function ($data) {
@@ -125,7 +125,7 @@ class SiswaController extends Controller
     public function importDocument(Request $request)
      {
         Excel::import(new SiswaImport($request), $request->file('siswa'));
-        return back();
+        return redirect('admin/siswa');
      }
 
 

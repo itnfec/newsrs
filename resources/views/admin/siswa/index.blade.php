@@ -81,8 +81,8 @@
                 <input type="hidden" id="editId">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="editRombel">Rombongan Belajar</label>
-                        <select name="rombel_id" id="editRombel" class="form-control select-rombel"></select>
+                        <label for="editLevel">Level</label>
+                        <select name="level_id" id="editLevel" class="form-control select-level"></select>
                     </div>
                     <div class="form-group">
                         <label for="editNama">Nama Siswa</label>

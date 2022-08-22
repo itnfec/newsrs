@@ -37,8 +37,8 @@
 
                             <div class="col-md-4">
                                   <div class="form-group">
-                        			<label for="editRombel">Rombongan Belajar</label>
-                        			<select name="rombel_id" id="editRombel" class="form-control select-rombel" required></select>
+                        			<label for="editLevel">Level</label>
+                        			<select name="level_id" id="editLevel" class="form-control select-level" required></select>
                     			</div>
                             </div>
 
@@ -100,12 +100,12 @@
             tableSoal.draw()
         })
 
-        //get rombongan belajar 
-       const selectRombel = $('.select-rombel').select2({
+        //get level 
+       const selectLevel = $('.select-level').select2({
         theme: 'bootstrap4',
-        placeholder: 'Pilih Rombongan Belajar',
+        placeholder: 'Pilih Level',
         ajax: {
-            url: URL_ADMIN + '/rombel/select2',
+            url: URL_ADMIN + '/level/select2',
             dataType: 'json',
             data: function (params) {
                 return {

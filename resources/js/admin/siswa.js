@@ -1,4 +1,4 @@
-import '../partials/select_rombel'
+import '../partials/select_level'
 
 const table = $('#table').DataTable({
     processing: true,
@@ -8,13 +8,8 @@ const table = $('#table').DataTable({
     },
     columns: [
         { data: 'index', name: 'id' },
-        {
-            data: 'domain_id'
-            }, {
-            data: 'level.name', name: 'level.name', render: function(data, type, row) {
-                return row.level.name + ' ' + data;
-            }
-        },
+        { data: 'domain_id'},
+        { data: 'level.name'},
         { data: 'nama' },
         { data: 'nis' },
         { data: 'jenis_kelamin' },
@@ -48,9 +43,9 @@ $(document).on('click', '.btn-edit', function () {
     const data = $(this).data()
     console.log(data)
 
-    const option = new Option(data.rombelNama, data.rombelId, true, true)
+    const option = new Option(data.levelName, data.levelId, true, true)
     $('#editId').val(data.id)
-    $('#editRombel').append(option).trigger('change')
+    $('#editLevel').append(option).trigger('change')
     $('#editNama').val(data.nama)
     $('#editNis').val(data.nis)
     $('#editJenisKelamin').val(data.jenisKelamin).trigger('change')

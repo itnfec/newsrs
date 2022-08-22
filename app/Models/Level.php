@@ -11,6 +11,8 @@ class Level extends Model
  use HasFactory, UuidTrait;
 
 
-  	protected $fillable = ['name, point'];
+  	protected $fillable = ['name', 'point'];
     protected $guarded = [];
+    // protected $casts = ['name' => 'double'];
+
 }

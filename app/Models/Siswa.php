@@ -10,7 +10,7 @@ class Siswa extends Authenticatable
 {
     use HasFactory, UuidTrait;
 
-    protected $fillable = ['nama', 'nis', 'jenis_kelamin', 'rombel_id', 'password', 'domain_id'];
+    protected $fillable = ['nama', 'nis', 'jenis_kelamin', 'level_id', 'password', 'domain_id'];
 
     protected $table = 'siswa';
 

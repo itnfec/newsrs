@@ -30,7 +30,7 @@ class SiswaImport implements ToCollection, WithHeadingRow, WithValidation
 	        	'nis' => $row['nis'],
     	    	'jenis_kelamin' => $row['jenis_kelamin'],
     	    	'password' => Hash::make('siswa'),
-    	    	'rombel_id' => $this->request->rombel_id,
+    	    	'level_id' => $this->request->level_id,
     	    	'domain_id' => $this->request->school_id,
         	];
 
